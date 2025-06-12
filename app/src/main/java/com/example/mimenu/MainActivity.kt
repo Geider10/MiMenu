@@ -18,22 +18,22 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         setContentView(binding.root)
 
         navigation = binding.bottomNavigationView
-        navigation.setOnNavigationItemSelectedListener  (this)
+        navigation.setOnNavigationItemSelectedListener(this)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
-            R.id.nav_item_one -> {
+            R.id.firstFragment -> {
                 supportFragmentManager.commit {
-                    replace(R.id.bottomNavigationView,FirstFragment())
-                    addToBackStack("replacment")
+                    replace(R.id.fragmentContainerView,FirstFragment())
+                    addToBackStack("replacement")
                 }
                 return true
             }
-            R.id.nav_item_two -> {
+            R.id.secondFragment -> {
                 supportFragmentManager.commit {
-                    replace(R.id.bottomNavigationView,SecondFragment())
-                    addToBackStack("replacment")
+                    replace(R.id.fragmentContainerView,SecondFragment())
+                    addToBackStack("replacement")
 
                 }
                 return true

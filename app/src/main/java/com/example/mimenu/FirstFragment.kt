@@ -18,7 +18,7 @@ class FirstFragment : Fragment() {
         binding = FragmentFirstBinding.inflate(inflater, container, false)
 
         binding.btnOne.setOnClickListener {
-            findNavController().navigate(R.id.action_firstFragment_to_secondFragment)
+
         }
 
         return binding.root
