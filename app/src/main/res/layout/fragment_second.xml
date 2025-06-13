@@ -6,11 +6,10 @@
     android:orientation="vertical"
     tools:context=".SecondFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="secomd fragment"
-        android:layout_gravity="center_horizontal"/>
+        />
 
 </LinearLayout>

@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_home"/>
     <item
         android:id="@+id/secondFragment"
-        android:title="Agrega"
+        android:title="Comprar"
         android:icon="@drawable/ic_user"/>
 
 </menu>
