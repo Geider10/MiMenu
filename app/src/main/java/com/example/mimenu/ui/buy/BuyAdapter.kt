@@ -28,6 +28,7 @@ class BuyAdapter (private val listFood : List<FoodEntity>): RecyclerView.Adapter
             with(binding){
                 tvNameItemBuy.text = food.name
                 tvPriceItemBuy.text = "$ " +  food.price.toString()
+                imgItemBuy.setImageResource(food.img)
             }
         }
     }
