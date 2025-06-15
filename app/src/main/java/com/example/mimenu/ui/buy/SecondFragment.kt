@@ -1,4 +1,4 @@
-package com.example.mimenu
+package com.example.mimenu.ui.buy
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -36,8 +36,8 @@ class SecondFragment : Fragment() {
             FoodEntity(5, "Sundae de Frutilla" ,2900, "Helado de crema americana", "Sundae"),
             FoodEntity(6, "Sundae de Dulce de Leche" ,2900, "Helado de crema americana", "Sundae"),
             FoodEntity(7, "Café con 2 Medialunas" ,2399, "2 medialunas de manteca acompañadas de un café" , "Team Dulce"),
-            FoodEntity(7, "Medialuna" ,1000, "medialunas de manteca" , "Team Dulce"),
-            FoodEntity(7, "Café con 2 Medialunas de jamón y queso" ,2399, "2 medialunas y un café" , "Team Dulce"),
+            FoodEntity(8, "Medialuna" ,1000, "medialunas de manteca" , "Team Dulce"),
+            FoodEntity(9, "Café con 2 Medialunas de jamón y queso" ,2399, "2 medialunas y un café" , "Team Dulce"),
             )
 
         return  foodList

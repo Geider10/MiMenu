@@ -1,4 +1,4 @@
-package com.example.mimenu
+package com.example.mimenu.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

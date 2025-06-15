@@ -1,10 +1,12 @@
-package com.example.mimenu
+package com.example.mimenu.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.commit
+import com.example.mimenu.R
 import com.example.mimenu.databinding.ActivityMainBinding
+import com.example.mimenu.ui.buy.SecondFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener{
@@ -25,14 +27,14 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         return when (item.itemId){
             R.id.firstFragment -> {
                 supportFragmentManager.commit {
-                    replace(R.id.fragmentContainerView,FirstFragment())
+                    replace(R.id.fragmentContainerView, FirstFragment())
                     addToBackStack("replacement")
                 }
                 return true
             }
             R.id.secondFragment -> {
                 supportFragmentManager.commit {
-                    replace(R.id.fragmentContainerView,SecondFragment())
+                    replace(R.id.fragmentContainerView, SecondFragment())
                     addToBackStack("replacement")
 
                 }
