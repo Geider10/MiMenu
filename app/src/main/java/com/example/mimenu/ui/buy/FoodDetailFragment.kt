@@ -14,6 +14,7 @@ import com.example.mimenu.databinding.FragmentFoodDetailBinding
 class FoodDetailFragment : Fragment() {
 
     private lateinit var binding : FragmentFoodDetailBinding
+    private lateinit var food : FoodEntity
     private var quantityFood = 1
 
     override fun onCreateView(
@@ -28,13 +29,40 @@ class FoodDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val args : FoodDetailFragmentArgs by navArgs()
-        val food = args.food
+        food = args.food
 
+        setDataFood()
+        binding.btnDeleteFood.setOnClickListener { deleteFood() }
+        binding.btnAddFood.setOnClickListener { addFood() }
+        binding.btnAddOrder.setOnClickListener { addOrder() }
+    }
+
+    private fun setDataFood(){
         binding.tvNameFoodDetail.text = food.name
         binding.tvDescriptionFoodDetail.text = food.description
         binding.ivFoodDetail.setImageResource(food.img)
-        binding.tvPriceFoodDetail.text = food.price.toString()
+        binding.tvPriceFoodDetail.text = "$ ${food.price}"
         binding.tvQuantityFoodDetail.text = quantityFood.toString()
+    }
+    private  fun deleteFood(){
+        if(quantityFood > 1){
+            quantityFood--
+            binding.tvQuantityFoodDetail.text = quantityFood.toString()
+            binding.tvPriceFoodDetail.text = getPriceFood(food.price,quantityFood)
+        }
+    }
+    private fun addFood(){
+        quantityFood++
+        binding.tvQuantityFoodDetail.text = quantityFood.toString()
+        binding.tvPriceFoodDetail.text = getPriceFood(food.price,quantityFood)
+
+    }
+    private fun getPriceFood (price : Int, quantity: Int) : String {
+        val price = price * quantity
+        return "$ $price"
+    }
+    private fun addOrder(){
+
     }
 
 }
