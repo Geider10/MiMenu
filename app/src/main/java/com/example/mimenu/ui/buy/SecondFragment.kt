@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mimenu.Entities.FoodEntity
 import com.example.mimenu.R
 import com.example.mimenu.databinding.FragmentSecondBinding
-class SecondFragment : Fragment() {
+class SecondFragment : Fragment(), OnFoodClick {
 
     private lateinit var binding : FragmentSecondBinding
 
@@ -24,12 +27,13 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val img = R.mipmap.hamburguer
+
         loadRecyclerView()
     }
     private fun loadRecyclerView(){
+        var adapter = BuyAdapter(createFoodMock(),this)
         binding.rvBuy.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvBuy.adapter = BuyAdapter(createFoodMock())
+        binding.rvBuy.adapter = adapter
     }
     private fun createFoodMock() : List<FoodEntity>{
         val foodList : List<FoodEntity> = listOf(
@@ -47,4 +51,8 @@ class SecondFragment : Fragment() {
         return foodList
     }
 
+    override fun onClick(food: FoodEntity) {
+        val action = SecondFragmentDirections.actionSecondFragmentToFoodDetailFragment(food)
+        findNavController().navigate(action)
+    }
 }

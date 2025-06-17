@@ -2,11 +2,14 @@ package com.example.mimenu.ui.buy
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.Entities.FoodEntity
 import com.example.mimenu.databinding.FragmentItemBuyBinding
 
-class BuyAdapter (private val listFood : List<FoodEntity>): RecyclerView.Adapter<BuyAdapter.BuyViewHolder>(){
+
+class BuyAdapter (private val listFood : List<FoodEntity>,private val buyFragment : SecondFragment): RecyclerView.Adapter<BuyAdapter.BuyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -23,14 +26,18 @@ class BuyAdapter (private val listFood : List<FoodEntity>): RecyclerView.Adapter
         return  listFood.size
     }
 
-    class BuyViewHolder (private val binding : FragmentItemBuyBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class BuyViewHolder (private val binding : FragmentItemBuyBinding) : RecyclerView.ViewHolder(binding.root){
         fun setValues (food : FoodEntity){
-            with(binding){
-                tvNameItemBuy.text = food.name
-                tvPriceItemBuy.text = "$ " +  food.price.toString()
-                imgItemBuy.setImageResource(food.img)
+
+            binding.tvNameItemBuy.text = food.name
+            binding.tvPriceItemBuy.text = "$ " + food.price.toString()
+            binding.imgItemBuy.setImageResource(food.img)
+
+            binding.root.setOnClickListener{
+               buyFragment.onClick(food)
             }
         }
+
     }
 
 }

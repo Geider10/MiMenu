@@ -7,4 +7,4 @@ data class FoodEntity (
     val description : String,
     val category : String,
     val img : Int
-        )
+        ) : java.io.Serializable
