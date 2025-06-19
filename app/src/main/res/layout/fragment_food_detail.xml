@@ -21,7 +21,7 @@
             android:id="@+id/ivFoodDetail"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             tools:background="@color/yellow_dark" />
         <TextView
             android:id="@+id/tvNameFoodDetail"

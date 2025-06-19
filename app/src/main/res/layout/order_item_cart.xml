@@ -17,8 +17,9 @@
         <ImageView
             android:layout_width="120dp"
             android:layout_height="100dp"
-            android:scaleType="center"
+            android:scaleType="fitCenter"
             tools:background="@color/yellow_dark"
+            tools:src="@mipmap/sundae"
             android:id="@+id/imgItemCart" />
         <!--    data order item-->
         <androidx.constraintlayout.widget.ConstraintLayout
