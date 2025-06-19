@@ -27,5 +27,10 @@
             android:name="food"
             app:argType="com.example.mimenu.Entities.FoodEntity"/>
     </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.mimenu.ui.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
 
 </navigation>

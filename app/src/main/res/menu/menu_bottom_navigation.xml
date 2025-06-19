@@ -8,5 +8,8 @@
         android:id="@+id/secondFragment"
         android:title="Comprar"
         android:icon="@drawable/ic_user"/>
-
+    <item
+        android:id="@+id/cartFragment"
+        android:title="Pedido"
+        android:icon="@drawable/ic_cart"/>
 </menu>

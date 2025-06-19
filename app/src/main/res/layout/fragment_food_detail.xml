@@ -60,7 +60,7 @@
                 android:id="@+id/btnDeleteFood"
                 android:minWidth="0dp"
                 android:layout_width="40dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 app:icon="@drawable/ic_delete"
                 />
@@ -75,7 +75,7 @@
                 android:id="@+id/btnAddFood"
                 android:minWidth="0dp"
                 android:layout_width="40dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 app:icon="@drawable/ic_add"
                 />
