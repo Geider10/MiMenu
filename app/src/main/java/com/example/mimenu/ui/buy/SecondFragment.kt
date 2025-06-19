@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mimenu.Entities.FoodEntity
+import com.example.mimenu.data.Entities.FoodEntity
 import com.example.mimenu.R
 import com.example.mimenu.databinding.FragmentSecondBinding
 class SecondFragment : Fragment(), OnFoodClick {

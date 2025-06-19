@@ -1,4 +1,4 @@
-package com.example.mimenu.Entities
+package com.example.mimenu.data.Entities
 
 data class OrderEntity (
     val id : Int,

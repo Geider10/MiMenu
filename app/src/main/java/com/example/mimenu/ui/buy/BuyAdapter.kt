@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mimenu.Entities.FoodEntity
+import com.example.mimenu.data.Entities.FoodEntity
 import com.example.mimenu.databinding.FragmentItemBuyBinding
 
 
-class BuyAdapter (private val listFood : List<FoodEntity>,private val buyFragment : SecondFragment): RecyclerView.Adapter<BuyAdapter.BuyViewHolder>(){
+class BuyAdapter (private val listFood : List<FoodEntity>, private val buyFragment : SecondFragment): RecyclerView.Adapter<BuyAdapter.BuyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuyViewHolder {
         val inflater = LayoutInflater.from(parent.context)

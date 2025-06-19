@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import com.example.mimenu.Entities.FoodEntity
+import com.example.mimenu.data.Entities.FoodEntity
 import com.example.mimenu.databinding.FragmentFoodDetailBinding
 
 

@@ -3,7 +3,7 @@ package com.example.mimenu.ui.cart
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mimenu.Entities.OrderEntity
+import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.databinding.OrderItemCartBinding
 
 class CartAdapter(private val listOrder : List<OrderEntity>) : RecyclerView.Adapter<CartAdapter.CartViewHolder>(){

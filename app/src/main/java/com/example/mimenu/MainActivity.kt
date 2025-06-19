@@ -1,4 +1,4 @@
-package com.example.mimenu.ui
+package com.example.mimenu
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
