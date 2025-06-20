@@ -27,14 +27,12 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //createDataBase()
+        createDataBase()
     }
     private fun createDataBase(){
-        appDB = Room.databaseBuilder(requireContext(), AppDataBase::class.java, "mimenu_database")
-            .allowMainThreadQueries()
-            .fallbackToDestructiveMigration()
-            .build()
-        appDB.orderDao().create(OrderEntity(2,"Sundae de Frutilla","Sundae", 2900 ,  R.mipmap.sundae, 8700,3))
+        appDB = AppDataBase.getDataBase()
+        //val orderList = appDB.orderDao().getAll()
+        //println(orderList.size)
     }
 
 
