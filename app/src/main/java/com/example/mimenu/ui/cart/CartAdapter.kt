@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.databinding.OrderItemCartBinding
 
-class CartAdapter(private val listOrder : List<OrderEntity>) : RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
+class CartAdapter(private val listOrder : List<OrderEntity>, private val cartFragment : CartFragment) : RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -27,6 +27,19 @@ class CartAdapter(private val listOrder : List<OrderEntity>) : RecyclerView.Adap
             binding.tvNameItemCart.text = order.name
             binding.tvQuantityItemCart.text = order.quantity.toString()
             binding.tvPriceItemCart.text ="$ " + order.priceTotal.toString()
+
+            binding.tvEditOrderCart.setOnClickListener{
+                cartFragment.onClickEdit(order)
+            }
+            binding.tvDeleteOrderCart.setOnClickListener{
+                cartFragment.onClickDelete(order)
+            }
+            binding.btnAddOrder.setOnClickListener {
+                cartFragment.onClickAdd(order)
+            }
+            binding.btnSubtractOrder.setOnClickListener {
+                cartFragment.onClickSubtract(order)
+            }
         }
     }
 

@@ -11,7 +11,7 @@ import com.example.mimenu.R
 import com.example.mimenu.databinding.FragmentCartBinding
 
 
-class CartFragment : Fragment() {
+class CartFragment : Fragment(), OnOrderClick {
 
     private lateinit var binding: FragmentCartBinding
 
@@ -29,7 +29,7 @@ class CartFragment : Fragment() {
         loadRecyclerView()
     }
     private fun loadRecyclerView(){
-        val adapter = CartAdapter(setOrderMockeados())
+        val adapter = CartAdapter(setOrderMockeados(),this)
         binding.rvCart.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCart.adapter = adapter
     }
@@ -39,7 +39,25 @@ class CartFragment : Fragment() {
             OrderEntity(1,"Mega Doble Big Bang","Mega hamburguesa", 13900 ,  R.mipmap.hamburguer, 27800,2),
             OrderEntity(2,"Sundae de Frutilla","Sundae", 2900 ,  R.mipmap.sundae, 8700,3),
             OrderEntity(3,"Café con 2 Medialunas","2 medialunas de manteca acompañadas de un café", 2399,R.mipmap.coffe,  2399,1)
-            )
+        )
         return  ordersList
     }
+
+    override fun onClickEdit(order: OrderEntity) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onClickDelete(order: OrderEntity) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onClickAdd(order: OrderEntity) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onClickSubtract(order: OrderEntity) {
+        TODO("Not yet implemented")
+    }
+
+
 }

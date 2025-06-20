@@ -25,7 +25,7 @@
         tools:layout="@layout/fragment_food_detail" >
         <argument
             android:name="food"
-            app:argType="com.example.mimenu.Entities.FoodEntity"/>
+            app:argType="com.example.mimenu.data.Entities.FoodEntity"/>
     </fragment>
     <fragment
         android:id="@+id/cartFragment"

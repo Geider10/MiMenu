@@ -1,7 +1,12 @@
 package com.example.mimenu.data.Entities
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "order")
 data class OrderEntity (
-    val id : Int,
+    @PrimaryKey(autoGenerate = true)
+    val id : Int = 0,
     val name: String,
     val description: String,
     val price: Int,
