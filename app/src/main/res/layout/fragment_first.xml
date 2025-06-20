@@ -7,12 +7,5 @@
     android:orientation="vertical"
     tools:context=".ui.home.FirstFragment">
 
-    <Button
-        android:id="@+id/btnOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:text="Navegar a Fragment 2" />
 
 </LinearLayout>
