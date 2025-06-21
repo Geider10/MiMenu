@@ -25,15 +25,4 @@ class FirstFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        createDataBase()
-    }
-    private fun createDataBase(){
-        appDB = AppDataBase.getDataBase()
-        //val orderList = appDB.orderDao().getAll()
-        //println(orderList.size)
-    }
-
-
 }

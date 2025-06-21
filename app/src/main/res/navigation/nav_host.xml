@@ -26,6 +26,9 @@
         <argument
             android:name="food"
             app:argType="com.example.mimenu.data.Entities.FoodEntity"/>
+        <action
+            android:id="@+id/action_foodDetailFragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"

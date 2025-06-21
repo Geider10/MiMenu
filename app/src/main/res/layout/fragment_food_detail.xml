@@ -100,12 +100,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent">
         <Button
             android:id="@+id/btnAddOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Agregar"/>
+            android:text="Agregar"/>
     </LinearLayout>
 
 
