@@ -18,7 +18,6 @@ class CartFragment : Fragment(), OnOrderClick {
 
     private lateinit var binding: FragmentCartBinding
     private val orderViewModel by viewModels<OrderViewModel>()
-    private lateinit var adapter: CartAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,15 +32,13 @@ class CartFragment : Fragment(), OnOrderClick {
         setDataRecycler()
     }
     private fun setDataRecycler(){
-        adapter = CartAdapter(this)
+        var orderList = orderViewModel.getAll()
+        var adapter = CartAdapter(this)
+        adapter.setOrderList(orderList)
         binding.rvCart.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCart.adapter = adapter
-        getAllOrder()
     }
-    private fun getAllOrder(){
-        var orderList = orderViewModel.getAll()
-        adapter.setOrderList(orderList)
-    }
+
     private fun setOrderMockeados(): List<OrderEntity>{
         val ordersList = listOf<OrderEntity>(
             OrderEntity(1,"Mega Doble Big Bang","Mega hamburguesa", 13900 ,  R.mipmap.hamburguer, 27800,2),
@@ -58,7 +55,7 @@ class CartFragment : Fragment(), OnOrderClick {
     override fun onClickDelete(order: OrderEntity) {
         Toast.makeText(requireContext(), "Se elimino una orden con exito", Toast.LENGTH_LONG).show()
         orderViewModel.delete(order)
-        getAllOrder()
+        setDataRecycler()
     }
 
     override fun onClickAdd(order: OrderEntity) {
