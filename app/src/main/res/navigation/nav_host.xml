@@ -24,8 +24,8 @@
         android:label="fragment_food_detail"
         tools:layout="@layout/fragment_food_detail" >
         <argument
-            android:name="food"
-            app:argType="com.example.mimenu.data.Entities.FoodEntity"/>
+            android:name="order"
+            app:argType="com.example.mimenu.data.Entities.OrderEntity"/>
         <action
             android:id="@+id/action_foodDetailFragment_to_secondFragment"
             app:destination="@id/secondFragment" />
@@ -34,6 +34,10 @@
         android:id="@+id/cartFragment"
         android:name="com.example.mimenu.ui.cart.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_foodDetailFragment"
+            app:destination="@id/foodDetailFragment" />
+    </fragment>
 
 </navigation>

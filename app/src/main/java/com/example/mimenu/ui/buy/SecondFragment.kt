@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mimenu.data.Entities.FoodEntity
 import com.example.mimenu.R
+import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.databinding.FragmentSecondBinding
 class SecondFragment : Fragment(), OnFoodClick {
 
@@ -37,9 +38,9 @@ class SecondFragment : Fragment(), OnFoodClick {
     }
     private fun createFoodMock() : List<FoodEntity>{
         val foodList : List<FoodEntity> = listOf(
-            FoodEntity(1, "Doble Cuarto Xl" ,119000, "Mega hamburguesa", "Hamburguesa", R.mipmap.hamburguer),
-            FoodEntity(2, "Epica Huevo" ,113000, "Mega hamburguesa", "Hamburguesa", R.mipmap.hamburguer),
-            FoodEntity(3, "Mega Doble Big Bang" ,139000, "Mega hamburguesa", "Hamburguesa", R.mipmap.hamburguer),
+            FoodEntity(1, "Doble Cuarto Xl" ,11900, "Mega hamburguesa", "Hamburguesa", R.mipmap.hamburguer),
+            FoodEntity(2, "Epica Huevo" ,11300, "Mega hamburguesa", "Hamburguesa", R.mipmap.hamburguer),
+            FoodEntity(3, "Mega Doble Big Bang" ,13900, "Mega hamburguesa", "Hamburguesa", R.mipmap.hamburguer),
             FoodEntity(4, "Sundae de Chocalate" ,2900, "Helado de crema americana", "Sundae", R.mipmap.sundae),
             FoodEntity(5, "Sundae de Frutilla" ,2900, "Helado de crema americana", "Sundae", R.mipmap.sundae),
             FoodEntity(6, "Sundae de Dulce de Leche" ,2900, "Helado de crema americana", "Sundae", R.mipmap.sundae),
@@ -52,7 +53,8 @@ class SecondFragment : Fragment(), OnFoodClick {
     }
 
     override fun onClick(food: FoodEntity) {
-        val action = SecondFragmentDirections.actionSecondFragmentToFoodDetailFragment(food)
+        val order = OrderEntity(name = food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1)
+        val action = SecondFragmentDirections.actionSecondFragmentToFoodDetailFragment(order)
         findNavController().navigate(action)
     }
 }

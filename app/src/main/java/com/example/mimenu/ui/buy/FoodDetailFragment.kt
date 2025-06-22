@@ -21,7 +21,7 @@ class FoodDetailFragment : Fragment() {
     private lateinit var binding : FragmentFoodDetailBinding
     private val orderViewModel by viewModels<OrderViewModel>()
 
-    private lateinit var food : FoodEntity
+    private lateinit var order : OrderEntity
     private var quantityFood = 1
 
     override fun onCreateView(
@@ -36,7 +36,7 @@ class FoodDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val args : FoodDetailFragmentArgs by navArgs()
-        food = args.food
+        order = args.order
 
         setDataFood()
         binding.btnDeleteFood.setOnClickListener { deleteFood() }
@@ -45,23 +45,25 @@ class FoodDetailFragment : Fragment() {
     }
 
     private fun setDataFood(){
-        binding.tvNameFoodDetail.text = food.name
-        binding.tvDescriptionFoodDetail.text = food.description
-        binding.ivFoodDetail.setImageResource(food.img)
-        binding.tvPriceFoodDetail.text = "$ ${food.price}"
+        quantityFood = order.quantity
+        binding.tvNameFoodDetail.text = order.name
+        binding.tvDescriptionFoodDetail.text = order.description
+        binding.ivFoodDetail.setImageResource(order.img)
+        binding.tvPriceFoodDetail.text = getPriceFood(order.price,quantityFood)
         binding.tvQuantityFoodDetail.text = quantityFood.toString()
+
     }
     private  fun deleteFood(){
         if(quantityFood > 1){
             quantityFood--
             binding.tvQuantityFoodDetail.text = quantityFood.toString()
-            binding.tvPriceFoodDetail.text = getPriceFood(food.price,quantityFood)
+            binding.tvPriceFoodDetail.text = getPriceFood(order.price,quantityFood)
         }
     }
     private fun addFood(){
         quantityFood++
         binding.tvQuantityFoodDetail.text = quantityFood.toString()
-        binding.tvPriceFoodDetail.text = getPriceFood(food.price,quantityFood)
+        binding.tvPriceFoodDetail.text = getPriceFood(order.price,quantityFood)
 
     }
     private fun getPriceFood (price : Int, quantity: Int) : String {
@@ -69,17 +71,17 @@ class FoodDetailFragment : Fragment() {
         return "$ ${price}"
     }
     private fun addOrder(){
-        val name = binding.tvNameFoodDetail.text.toString()
-        val description = binding.tvDescriptionFoodDetail.text.toString()
         var priceTotal = binding.tvPriceFoodDetail.text.toString()
         val quantity = binding.tvQuantityFoodDetail.text.toString()
-
         priceTotal = priceTotal.replace("$","").trim()
-        val order = OrderEntity(name = name, description = description, price = food.price, img = food.img, priceTotal = priceTotal.toInt(), quantity = quantity.toInt())
-        orderViewModel.create(order)
 
-        findNavController().navigate(R.id.action_foodDetailFragment_to_secondFragment)
-        Toast.makeText(requireContext(),"Se agrego con exito", Toast.LENGTH_LONG).show()
+        if (order.id == 0){
+            val orderCopy = order.copy(priceTotal = priceTotal.toInt(), quantity = quantity.toInt())
+            orderViewModel.create(orderCopy)
+            findNavController().navigate(R.id.action_foodDetailFragment_to_secondFragment)
+            Toast.makeText(requireContext(),"Agregaste un pedido con exito", Toast.LENGTH_LONG).show()
+        }
+
     }
 
 }
