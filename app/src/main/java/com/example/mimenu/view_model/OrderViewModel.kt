@@ -1,6 +1,7 @@
 package com.example.mimenu.view_model
 
 import androidx.lifecycle.ViewModel
+import androidx.room.Index.Order
 import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.repository.Repository
 
@@ -10,5 +11,9 @@ class OrderViewModel: ViewModel() {
 
     fun create(order: OrderEntity){
         repo.createOrder(order)
+    }
+    fun getAll():List<OrderEntity>{
+        val orderList = repo.getAllOrders()
+        return orderList
     }
 }

@@ -5,15 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.R
 import com.example.mimenu.databinding.FragmentCartBinding
+import com.example.mimenu.view_model.OrderViewModel
 
 
 class CartFragment : Fragment(), OnOrderClick {
 
     private lateinit var binding: FragmentCartBinding
+    private val orderViewModel by viewModels<OrderViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,12 +29,16 @@ class CartFragment : Fragment(), OnOrderClick {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loadRecyclerView()
+        setDataRecycler()
     }
-    private fun loadRecyclerView(){
-        val adapter = CartAdapter(setOrderMockeados(),this)
+    private fun setDataRecycler(){
+        val adapter = CartAdapter(this)
         binding.rvCart.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCart.adapter = adapter
+
+        val orderList = orderViewModel.getAll()
+        println(orderList.size)
+        adapter.setOrderList(orderList)
     }
 
     private fun setOrderMockeados(): List<OrderEntity>{

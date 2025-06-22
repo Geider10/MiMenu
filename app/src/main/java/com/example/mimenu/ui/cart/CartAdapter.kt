@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.databinding.OrderItemCartBinding
 
-class CartAdapter(private val listOrder : List<OrderEntity>, private val cartFragment : CartFragment) : RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
+class CartAdapter(private val cartFragment : CartFragment) : RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
+
+    private var orderList  = emptyList<OrderEntity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -15,11 +17,11 @@ class CartAdapter(private val listOrder : List<OrderEntity>, private val cartFra
     }
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-        val orderItem = listOrder.get(position)
+        val orderItem = orderList.get(position)
         holder.setValues(orderItem)
     }
 
-    override fun getItemCount() : Int = listOrder.size
+    override fun getItemCount() : Int = orderList.size
 
     inner class CartViewHolder(private val binding : OrderItemCartBinding) : RecyclerView.ViewHolder(binding.root){
         fun setValues(order : OrderEntity){
@@ -42,5 +44,7 @@ class CartAdapter(private val listOrder : List<OrderEntity>, private val cartFra
             }
         }
     }
-
+    fun setOrderList(orderList : List<OrderEntity>){
+        this.orderList = orderList
+    }
 }

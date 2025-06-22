@@ -12,7 +12,7 @@ import com.example.mimenu.data.Entities.OrderEntity
 @Dao
 interface OrderDao {
     @Query("SELECT * FROM `order`")
-    fun getAll() : LiveData<List<OrderEntity>>
+    fun getAll() : List<OrderEntity>
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun create(order : OrderEntity)
     @Delete

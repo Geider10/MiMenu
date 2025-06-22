@@ -10,4 +10,8 @@ class Repository {
     fun createOrder(order: OrderEntity){
         dbDao.orderDao().create(order)
     }
+    fun getAllOrders() : List<OrderEntity>{
+        val orderList = dbDao.orderDao().getAll()
+        return orderList
+    }
 }
