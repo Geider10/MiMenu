@@ -47,19 +47,13 @@ class CartFragment : Fragment(), OnOrderClick {
     }
 
     override fun onClickDelete(order: OrderEntity) {
-        Toast.makeText(requireContext(), "Eliminaste un pedido con exito", Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), "Eliminaste un pedido con éxito", Toast.LENGTH_LONG).show()
         orderViewModel.delete(order)
         setDataRecycler()
     }
 
-    override fun onClickAdd(order: OrderEntity) {
+    override fun onClickIcon(order: OrderEntity) {
         orderViewModel.update(order)
         setDataRecycler()
     }
-
-    override fun onClickSubtract(order: OrderEntity) {
-        orderViewModel.update(order)
-        setDataRecycler()
-    }
-
 }

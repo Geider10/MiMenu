@@ -47,7 +47,7 @@ class CartAdapter(private val cartFragment : CartFragment) : RecyclerView.Adapte
                 val priceTotal = order.price * quantity
                 val orderCopy = order.copy(priceTotal = priceTotal, quantity = quantity)
 
-                cartFragment.onClickAdd(orderCopy)
+                cartFragment.onClickIcon(orderCopy)
             }
             binding.btnSubtractOrder.setOnClickListener {
                 var quantity = binding.tvQuantityItemCart.text.toString().toInt()
@@ -56,7 +56,7 @@ class CartAdapter(private val cartFragment : CartFragment) : RecyclerView.Adapte
                     val priceTotal = order.price * quantity
                     val orderCopy = order.copy(priceTotal = priceTotal, quantity = quantity)
 
-                    cartFragment.onClickSubtract(orderCopy)
+                    cartFragment.onClickIcon(orderCopy)
                 }
             }
         }

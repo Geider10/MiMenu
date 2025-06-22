@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mimenu.R
-import com.example.mimenu.data.Entities.FoodEntity
 import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.databinding.FragmentFoodDetailBinding
 import com.example.mimenu.view_model.OrderViewModel
@@ -49,7 +48,7 @@ class FoodDetailFragment : Fragment() {
         binding.tvNameFoodDetail.text = order.name
         binding.tvDescriptionFoodDetail.text = order.description
         binding.ivFoodDetail.setImageResource(order.img)
-        binding.tvPriceFoodDetail.text = getPriceFood(order.price,quantityFood)
+        binding.tvPriceFoodDetail.text = formatPriceFood(order.price,quantityFood)
         binding.tvQuantityFoodDetail.text = quantityFood.toString()
 
         println(order.id)
@@ -64,16 +63,16 @@ class FoodDetailFragment : Fragment() {
         if(quantityFood > 1){
             quantityFood--
             binding.tvQuantityFoodDetail.text = quantityFood.toString()
-            binding.tvPriceFoodDetail.text = getPriceFood(order.price,quantityFood)
+            binding.tvPriceFoodDetail.text = formatPriceFood(order.price,quantityFood)
         }
     }
     private fun addFood(){
         quantityFood++
         binding.tvQuantityFoodDetail.text = quantityFood.toString()
-        binding.tvPriceFoodDetail.text = getPriceFood(order.price,quantityFood)
+        binding.tvPriceFoodDetail.text = formatPriceFood(order.price,quantityFood)
 
     }
-    private fun getPriceFood (price : Int, quantity: Int) : String {
+    private fun formatPriceFood (price : Int, quantity: Int) : String {
         val price = price * quantity
         return "$ ${price}"
     }
@@ -86,11 +85,11 @@ class FoodDetailFragment : Fragment() {
         if (order.id == 0){
             orderViewModel.create(orderCopy)
             findNavController().navigate(R.id.action_foodDetailFragment_to_secondFragment)
-            Toast.makeText(requireContext(),"Agregaste un pedido con exito", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(),"Agregaste un pedido con éxito", Toast.LENGTH_LONG).show()
         }else if(order.id != 0){
             orderViewModel.update(orderCopy)
             findNavController().navigate(R.id.action_foodDetailFragment_to_cartFragment)
-            Toast.makeText(requireContext(),"Actualizaste un pedido con exito", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(),"Actualizaste un pedido con éxito", Toast.LENGTH_LONG).show()
         }
 
     }
