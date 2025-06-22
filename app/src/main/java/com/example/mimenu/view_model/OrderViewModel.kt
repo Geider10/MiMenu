@@ -19,4 +19,7 @@ class OrderViewModel: ViewModel() {
     fun delete(order: OrderEntity){
         repo.deleteOrder(order)
     }
+    fun update(order: OrderEntity){
+        repo.updateOrder(order)
+    }
 }

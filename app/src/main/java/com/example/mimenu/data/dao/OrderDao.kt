@@ -17,4 +17,6 @@ interface OrderDao {
     fun create(order : OrderEntity)
     @Delete
     fun delete(order: OrderEntity)
+    @Update
+    fun update(order: OrderEntity)
 }

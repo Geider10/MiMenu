@@ -31,7 +31,12 @@ class CartAdapter(private val cartFragment : CartFragment) : RecyclerView.Adapte
             binding.tvPriceItemCart.text ="$ " + order.priceTotal.toString()
 
             binding.tvEditOrderCart.setOnClickListener{
-                cartFragment.onClickEdit(order)
+                var pricetotal = binding.tvPriceItemCart.text.toString()
+                val quantity = binding.tvQuantityItemCart.text.toString()
+                pricetotal = pricetotal.substring(2)
+                val orderCopy = order.copy(priceTotal = pricetotal.toInt(), quantity = quantity.toInt())
+
+                cartFragment.onClickEdit(orderCopy)
             }
             binding.tvDeleteOrderCart.setOnClickListener{
                 cartFragment.onClickDelete(order)

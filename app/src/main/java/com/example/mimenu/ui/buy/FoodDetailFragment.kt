@@ -41,7 +41,7 @@ class FoodDetailFragment : Fragment() {
         setDataFood()
         binding.btnDeleteFood.setOnClickListener { deleteFood() }
         binding.btnAddFood.setOnClickListener { addFood() }
-        binding.btnAddOrder.setOnClickListener { addOrder() }
+        binding.btnClickOrder.setOnClickListener { onClickOrder() }
     }
 
     private fun setDataFood(){
@@ -52,8 +52,15 @@ class FoodDetailFragment : Fragment() {
         binding.tvPriceFoodDetail.text = getPriceFood(order.price,quantityFood)
         binding.tvQuantityFoodDetail.text = quantityFood.toString()
 
+        println(order.id)
+        if(order.id == 0){
+            binding.btnClickOrder.text = "Agregar"
+        }else{
+            binding.btnClickOrder.text = "Guardar cambio"
+        }
+
     }
-    private  fun deleteFood(){
+    private fun deleteFood(){
         if(quantityFood > 1){
             quantityFood--
             binding.tvQuantityFoodDetail.text = quantityFood.toString()
@@ -70,16 +77,20 @@ class FoodDetailFragment : Fragment() {
         val price = price * quantity
         return "$ ${price}"
     }
-    private fun addOrder(){
+    private fun onClickOrder(){
         var priceTotal = binding.tvPriceFoodDetail.text.toString()
         val quantity = binding.tvQuantityFoodDetail.text.toString()
         priceTotal = priceTotal.replace("$","").trim()
+        val orderCopy = order.copy(priceTotal = priceTotal.toInt(), quantity = quantity.toInt())
 
         if (order.id == 0){
-            val orderCopy = order.copy(priceTotal = priceTotal.toInt(), quantity = quantity.toInt())
             orderViewModel.create(orderCopy)
             findNavController().navigate(R.id.action_foodDetailFragment_to_secondFragment)
             Toast.makeText(requireContext(),"Agregaste un pedido con exito", Toast.LENGTH_LONG).show()
+        }else if(order.id != 0){
+            orderViewModel.update(orderCopy)
+            findNavController().navigate(R.id.action_foodDetailFragment_to_cartFragment)
+            Toast.makeText(requireContext(),"Actualizaste un pedido con exito", Toast.LENGTH_LONG).show()
         }
 
     }

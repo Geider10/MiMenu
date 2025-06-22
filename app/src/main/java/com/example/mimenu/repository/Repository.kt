@@ -17,4 +17,7 @@ class Repository {
     fun deleteOrder(order: OrderEntity){
         dbDao.orderDao().delete(order)
     }
+    fun updateOrder(order : OrderEntity){
+        dbDao.orderDao().update(order)
+    }
 }
