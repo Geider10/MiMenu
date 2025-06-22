@@ -16,4 +16,7 @@ class OrderViewModel: ViewModel() {
         val orderList = repo.getAllOrders()
         return orderList
     }
+    fun delete(order: OrderEntity){
+        repo.deleteOrder(order)
+    }
 }

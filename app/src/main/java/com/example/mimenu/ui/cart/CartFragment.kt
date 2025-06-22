@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mimenu.data.Entities.OrderEntity
@@ -17,7 +18,7 @@ class CartFragment : Fragment(), OnOrderClick {
 
     private lateinit var binding: FragmentCartBinding
     private val orderViewModel by viewModels<OrderViewModel>()
-
+    private lateinit var adapter: CartAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,15 +33,15 @@ class CartFragment : Fragment(), OnOrderClick {
         setDataRecycler()
     }
     private fun setDataRecycler(){
-        val adapter = CartAdapter(this)
+        adapter = CartAdapter(this)
         binding.rvCart.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCart.adapter = adapter
-
-        val orderList = orderViewModel.getAll()
-        println(orderList.size)
+        getAllOrder()
+    }
+    private fun getAllOrder(){
+        var orderList = orderViewModel.getAll()
         adapter.setOrderList(orderList)
     }
-
     private fun setOrderMockeados(): List<OrderEntity>{
         val ordersList = listOf<OrderEntity>(
             OrderEntity(1,"Mega Doble Big Bang","Mega hamburguesa", 13900 ,  R.mipmap.hamburguer, 27800,2),
@@ -55,7 +56,9 @@ class CartFragment : Fragment(), OnOrderClick {
     }
 
     override fun onClickDelete(order: OrderEntity) {
-        TODO("Not yet implemented")
+        Toast.makeText(requireContext(), "Se elimino una orden con exito", Toast.LENGTH_LONG).show()
+        orderViewModel.delete(order)
+        getAllOrder()
     }
 
     override fun onClickAdd(order: OrderEntity) {

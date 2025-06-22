@@ -14,4 +14,7 @@ class Repository {
         val orderList = dbDao.orderDao().getAll()
         return orderList
     }
+    fun deleteOrder(order: OrderEntity){
+        dbDao.orderDao().delete(order)
+    }
 }
