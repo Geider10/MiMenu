@@ -53,7 +53,8 @@ class CartFragment : Fragment(), OnOrderClick {
     }
 
     override fun onClickAdd(order: OrderEntity) {
-        TODO("Not yet implemented")
+        orderViewModel.update(order)
+        setDataRecycler()
     }
 
     override fun onClickSubtract(order: OrderEntity) {
