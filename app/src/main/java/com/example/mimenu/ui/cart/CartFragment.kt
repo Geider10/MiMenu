@@ -32,13 +32,18 @@ class CartFragment : Fragment(), OnOrderClick {
         super.onViewCreated(view, savedInstanceState)
 
         setDataRecycler()
+        binding.btnPayCart.setOnClickListener{
+            onClickPay()
+        }
     }
     private fun setDataRecycler(){
         var orderList = orderViewModel.getAll()
         var adapter = CartAdapter(this)
         adapter.setOrderList(orderList)
+        var total = adapter.getPriceToPay()
         binding.rvCart.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCart.adapter = adapter
+        binding.tvPriceTotalCart.text = "$ $total"
     }
 
     override fun onClickEdit(order: OrderEntity) {
@@ -55,5 +60,8 @@ class CartFragment : Fragment(), OnOrderClick {
     override fun onClickIcon(order: OrderEntity) {
         orderViewModel.update(order)
         setDataRecycler()
+    }
+    private fun onClickPay(){
+        Toast.makeText(requireContext(), "Pagaste con éxito", Toast.LENGTH_SHORT).show()
     }
 }

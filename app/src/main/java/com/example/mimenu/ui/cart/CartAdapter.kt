@@ -64,4 +64,11 @@ class CartAdapter(private val cartFragment : CartFragment) : RecyclerView.Adapte
     fun setOrderList(orderList : List<OrderEntity>){
         this.orderList = orderList
     }
+    fun getPriceToPay(): Int{
+        var total = 0
+        for (order in orderList){
+            total += order.priceTotal
+        }
+        return total
+    }
 }
