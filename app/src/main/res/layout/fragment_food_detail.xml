@@ -38,6 +38,8 @@
             tools:textColor="@color/black"
             android:textSize="12sp"
             android:layout_marginTop="4dp"/>
+
+
     </LinearLayout>
 
     <!-- food option -->
@@ -100,7 +102,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent">
         <Button
             android:id="@+id/btnClickOrder"
@@ -108,7 +109,6 @@
             android:layout_height="wrap_content"
             android:text="Agregar/Editar"/>
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
