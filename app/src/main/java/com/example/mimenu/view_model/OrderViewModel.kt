@@ -1,24 +1,31 @@
 package com.example.mimenu.view_model
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.room.Index.Order
 import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.repository.Repository
+import kotlinx.coroutines.launch
 
 class OrderViewModel: ViewModel() {
 
     private val repo = Repository()
 
     fun create(order: OrderEntity){
-        repo.createOrder(order)
+        viewModelScope.launch {
+            repo.createOrder(order)
+        }
     }
-    fun getAll():List<OrderEntity>{
-        return repo.getAllOrders()
-    }
+    val getAll:LiveData<List<OrderEntity>> = repo.getAllOrders
     fun delete(order: OrderEntity){
-        repo.deleteOrder(order)
+        viewModelScope.launch {
+            repo.deleteOrder(order)
+        }
     }
     fun update(order: OrderEntity){
-        repo.updateOrder(order)
+        viewModelScope.launch {
+            repo.updateOrder(order)
+        }
     }
 }
