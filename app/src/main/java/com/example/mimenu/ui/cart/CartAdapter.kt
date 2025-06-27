@@ -1,5 +1,6 @@
 package com.example.mimenu.ui.cart
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -61,8 +62,10 @@ class CartAdapter(private val cartFragment : CartFragment) : RecyclerView.Adapte
             }
         }
     }
+    //@SuppressLint("NotifyDataSetChanged")
     fun setOrderList(orderList : List<OrderEntity>){
         this.orderList = orderList
+        //notifyDataSetChanged()
     }
     fun getPriceToPay(): Int{
         var total = 0
