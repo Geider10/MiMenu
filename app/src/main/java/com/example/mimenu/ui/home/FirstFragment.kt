@@ -12,6 +12,7 @@ import com.example.mimenu.data.AppDataBase
 import com.example.mimenu.data.Entities.BannerEntity
 import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.databinding.FragmentFirstBinding
+import me.relex.circleindicator.CircleIndicator3
 
 class FirstFragment : Fragment() {
 
@@ -33,12 +34,14 @@ class FirstFragment : Fragment() {
     private fun loadViewPager(){
         val adapter = BannerAdapter(getBanner())
         binding.viewPager.adapter = adapter
+        binding.indicator.setViewPager(binding.viewPager)
     }
     private fun getBanner() : List<BannerEntity>{
         val bannerList = listOf(
-            BannerEntity(1,R.mipmap.hamburguer,"Banner 1" ),
-            BannerEntity(2,R.mipmap.sundae,"Banner 2" ),
-            BannerEntity(3,R.mipmap.coffe,"Banner 3" )
+            BannerEntity(1,R.mipmap.b1,"Banner 1" ),
+            BannerEntity(2,R.mipmap.b2,"Banner 2" ),
+            BannerEntity(3,R.mipmap.b33,"Banner 3" ),
+            BannerEntity(4,R.mipmap.b44,"Banner 4" )
         )
         return bannerList
     }

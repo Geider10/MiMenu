@@ -7,15 +7,9 @@
     android:orientation="vertical">
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:scaleType="fitCenter"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
         tools:background="@color/yellow_dark"
         android:id="@+id/imgBannerHome"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text = "Banner 1"
-        android:layout_gravity="center"
-        android:id="@+id/tvBannerHome"/>
 
 </LinearLayout>

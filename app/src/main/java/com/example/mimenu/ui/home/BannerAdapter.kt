@@ -10,7 +10,6 @@ class BannerAdapter (private var bannerList : List<BannerEntity>) : RecyclerView
     inner class BannerViewHolder(private val binding : BannerItemHomeBinding):RecyclerView.ViewHolder(binding.root){
         fun setValues(banner : BannerEntity){
             binding.imgBannerHome.setImageResource(banner.img)
-            binding.tvBannerHome.text = banner.title
         }
     }
     //infla el layout de los elementos de la lista
