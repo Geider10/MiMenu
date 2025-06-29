@@ -1,10 +1,13 @@
 package com.example.mimenu.ui.buy
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
@@ -14,6 +17,8 @@ import com.example.mimenu.R
 import com.example.mimenu.data.Entities.CategoryEntity
 import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.databinding.FragmentSecondBinding
+import com.google.android.material.chip.Chip
+
 class SecondFragment : Fragment(), OnFoodClick {
 
     private lateinit var binding : FragmentSecondBinding
@@ -31,7 +36,7 @@ class SecondFragment : Fragment(), OnFoodClick {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerFood()
-        setupRecyclerCategory()
+        setupChipGroup(getCategoryMock())
     }
     private fun setupRecyclerFood(){
         var adapter = BuyAdapter(getFoodMock(),this)
@@ -60,10 +65,23 @@ class SecondFragment : Fragment(), OnFoodClick {
         findNavController().navigate(action)
     }
 
-    private fun setupRecyclerCategory(){
-        var adapter = CategoryAdapter(getCategoryMock())
-        binding.rvCategoryBuy.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvCategoryBuy.adapter = adapter
+    private fun setupChipGroup(categoryList : List<CategoryEntity>){
+        categoryList.forEach{ tag ->
+            val chip = Chip(requireContext())
+            chip.text = tag.name
+            chip.isCheckable = true
+            chip.isCheckedIconVisible = false
+            chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_dark))
+            chip.chipBackgroundColor = ContextCompat.getColorStateList(requireContext(), R.color.chip_category_selector)
+            if(tag.id == 1){
+                chip.isChecked = true
+            }
+
+            chip.setOnClickListener{
+                Log.d("category-item", chip.text.toString())
+            }
+            binding.cgCategory.addView(chip)
+        }
     }
     private fun getCategoryMock(): List<CategoryEntity> {
         return listOf(
