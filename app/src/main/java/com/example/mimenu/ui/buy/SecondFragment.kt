@@ -6,16 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
+import androidx.core.view.setPadding
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.Entities.FoodEntity
 import com.example.mimenu.R
 import com.example.mimenu.data.Entities.CategoryEntity
 import com.example.mimenu.data.Entities.OrderEntity
+import com.example.mimenu.databinding.FragmentItemBuyBinding
 import com.example.mimenu.databinding.FragmentSecondBinding
 import com.google.android.material.chip.Chip
 
@@ -35,11 +40,12 @@ class SecondFragment : Fragment(), OnFoodClick {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupRecyclerFood()
         setupChipGroup(getCategoryMock())
+        setupRecyclerFood()
     }
     private fun setupRecyclerFood(){
-        var adapter = BuyAdapter(getFoodMock(),this)
+        val itemBuyList = createItemBuyList()
+        var adapter = BuyAdapter(itemBuyList,this)
         binding.rvFoodBuy.layoutManager = LinearLayoutManager(requireContext())
         binding.rvFoodBuy.adapter = adapter
     }
@@ -93,4 +99,21 @@ class SecondFragment : Fragment(), OnFoodClick {
             CategoryEntity(6, "bebidas"),
         )
     }
+
+    private fun createItemBuyList() : List<ItemBuy>{
+        var itemBuyList = mutableListOf<ItemBuy>()//cada item es un categoryItem o foodItem
+        val foodList = getFoodMock()
+        val categoryList = getCategoryMock()
+
+        categoryList.forEach{ c ->
+            itemBuyList.add(ItemBuy.CategoryItem(c.id,c.name))
+            val foodFilter = foodList.filter { it.category == c.name }
+            foodFilter.forEach{ f ->
+                itemBuyList.add(ItemBuy.FoodItem(f))
+            }
+        }
+
+        return  itemBuyList
+    }
+
 }

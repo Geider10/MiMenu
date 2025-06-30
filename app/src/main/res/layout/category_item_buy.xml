@@ -3,14 +3,16 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <com.google.android.material.chip.Chip
+    <TextView
         android:id="@+id/tvCategoryItemBuy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_dark"
+        android:textColor="@color/black"
         tools:text="Hamburguesa"
+        android:textSize="16dp"
+        android:layout_marginBottom="4dp"
         />
 
 </LinearLayout>
