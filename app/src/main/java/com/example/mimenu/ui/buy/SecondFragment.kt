@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
@@ -22,11 +23,15 @@ import com.example.mimenu.data.Entities.CategoryEntity
 import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.databinding.FragmentItemBuyBinding
 import com.example.mimenu.databinding.FragmentSecondBinding
+import com.example.mimenu.view_model.CategoryViewModel
+import com.example.mimenu.view_model.FoodViewModel
 import com.google.android.material.chip.Chip
 
 class SecondFragment : Fragment(), OnFoodClick {
 
     private lateinit var binding : FragmentSecondBinding
+    private val foodViewModel by viewModels<FoodViewModel>()
+    private val categoryViewModel by viewModels<CategoryViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +45,7 @@ class SecondFragment : Fragment(), OnFoodClick {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupChipGroup(getCategoryMock())
+        setupChipGroup(categoryViewModel.getAll)
         setupRecyclerFood()
     }
     private fun setupRecyclerFood(){
@@ -48,21 +53,6 @@ class SecondFragment : Fragment(), OnFoodClick {
         var adapter = BuyAdapter(itemBuyList,this)
         binding.rvFoodBuy.layoutManager = LinearLayoutManager(requireContext())
         binding.rvFoodBuy.adapter = adapter
-    }
-    private fun getFoodMock() : List<FoodEntity>{
-        val foodList : List<FoodEntity> = listOf(
-            FoodEntity(1, "Doble Cuarto Xl" ,11900, "Mega hamburguesa de doble carne, doble queso cheddar, cebollita, kétchup y mostaza en pan de papa.", "Hamburguesa", R.mipmap.hamburguer),
-            FoodEntity(2, "Epica Huevo" ,11300, "Mega hamburguesa de carne, queso cheddar, panceta, huevo, cebolla grillada y barbacoa ahumada en pan de papa.", "Hamburguesa", R.mipmap.hamburguer),
-            FoodEntity(3, "Mega Doble Big Bang Cheddar" ,13900, "Mega hamburguesa de doble carne, queso cheddar, bacon, cebollita, kétchup y salsa cheddar en pan de papa. ", "Hamburguesa", R.mipmap.hamburguer),
-            FoodEntity(4, "Sundae de Chocalate" ,2900, "Helado de crema americana con salsa de chocolate.", "Sundae", R.mipmap.sundae),
-            FoodEntity(5, "Sundae de Frutilla" ,2900, "Helado de crema americana con salsa de frutilla.", "Sundae", R.mipmap.sundae),
-            FoodEntity(6, "Sundae de Dulce de Leche" ,2900, "Helado de crema americana con salsa de dulce de leche.", "Sundae", R.mipmap.sundae),
-            FoodEntity(7, "Café con 2 Medialunas" ,2399, "2 medialunas de manteca acompañadas de un café 330cc a elección o jugo de naranja." , "Team Dulce", R.mipmap.coffe),
-            FoodEntity(8, "Medialuna" ,1000, "Medialuna de manteca." , "Team Dulce", R.mipmap.coffe),
-            FoodEntity(9, "Café con 2 Medialunas de jamón y cheddar" ,3700, "2 medialunas jamón y cheddar de manteca acompañados de un café 330cc a elección o  jugo de naranja." , "Team Dulce", R.mipmap.coffe),
-            )
-
-        return foodList
     }
 
     override fun onClick(food: FoodEntity) {
@@ -89,21 +79,12 @@ class SecondFragment : Fragment(), OnFoodClick {
             binding.cgCategory.addView(chip)
         }
     }
-    private fun getCategoryMock(): List<CategoryEntity> {
-        return listOf(
-            CategoryEntity(1, "Hamburguesa"),
-            CategoryEntity(2, "Sundae"),
-            CategoryEntity(3, "Team Dulce"),
-            CategoryEntity(4, "Ensaladas"),
-            CategoryEntity(5, "Nuggets"),
-            CategoryEntity(6, "bebidas"),
-        )
-    }
+
 
     private fun createItemBuyList() : List<ItemBuy>{
         var itemBuyList = mutableListOf<ItemBuy>()//cada item es un categoryItem o foodItem
-        val foodList = getFoodMock()
-        val categoryList = getCategoryMock()
+        val foodList = foodViewModel.getAll
+        val categoryList = categoryViewModel.getAll
 
         categoryList.forEach{ c ->
             itemBuyList.add(ItemBuy.CategoryItem(c.id,c.name))

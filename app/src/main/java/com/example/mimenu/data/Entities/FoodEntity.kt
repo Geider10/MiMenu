@@ -6,5 +6,6 @@ data class FoodEntity (
     val price : Int,
     val description : String,
     val category : String,
-    val img : Int
+    val img : Int,
+    val discount : Int? = null
         ) : java.io.Serializable
