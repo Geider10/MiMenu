@@ -4,5 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_edit"><u>Editar</u></string>
     <string name="text_delete"><u>Eliminar</u></string>
+    <string name="text_cross"><strike>$ 11.300</strike> </string>
 
 </resources>
