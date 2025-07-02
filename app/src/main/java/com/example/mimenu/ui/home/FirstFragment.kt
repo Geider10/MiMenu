@@ -12,12 +12,13 @@ import androidx.room.Room
 import com.example.mimenu.R
 import com.example.mimenu.data.AppDataBase
 import com.example.mimenu.data.Entities.BannerEntity
+import com.example.mimenu.data.Entities.FoodEntity
 import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.databinding.FragmentFirstBinding
 import com.example.mimenu.view_model.FoodViewModel
 import me.relex.circleindicator.CircleIndicator3
 
-class FirstFragment : Fragment() {
+class FirstFragment : Fragment(), OnClickHome {
 
     private lateinit var binding : FragmentFirstBinding
     private val foodViewModel by viewModels<FoodViewModel>()
@@ -51,8 +52,16 @@ class FirstFragment : Fragment() {
         return bannerList
     }
     private fun setupDiscountRecycler(){
-        val adapter = DiscountAdapter(foodViewModel.getOffer)
+        val adapter = DiscountAdapter(foodViewModel.getOffer, this)
         binding.rvDiscountHome.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvDiscountHome.adapter = adapter
+    }
+
+    override fun onClickDiscount(food: FoodEntity) {
+        val offer = (food.price * food.discount!!)/100
+        val priceOffer = food.price - offer
+        val order = OrderEntity(name= food.name, description = food.description, price = priceOffer, img = food.img, priceTotal = food.price, quantity = 1)
+        val action = FirstFragmentDirections.actionFirstFragmentToFoodDetailFragment(order)
+        findNavController().navigate(action)
     }
 }
