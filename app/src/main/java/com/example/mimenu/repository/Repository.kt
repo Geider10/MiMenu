@@ -26,6 +26,7 @@ class Repository {
     }
     //food
     val getAllFood : List<FoodEntity> = provider.getAllFood()
+    val getFoodOffer : List<FoodEntity> = provider.getFoodOffer()
     //category
     val getAllCategory : List<CategoryEntity> = provider.getAllCategory()
 }

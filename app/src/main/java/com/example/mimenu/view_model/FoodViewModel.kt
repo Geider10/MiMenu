@@ -8,4 +8,6 @@ class FoodViewModel : ViewModel() {
     private val repo = Repository()
 
     val getAll : List<FoodEntity> = repo.getAllFood
+    val getOffer : List<FoodEntity> = repo.getFoodOffer
+
 }

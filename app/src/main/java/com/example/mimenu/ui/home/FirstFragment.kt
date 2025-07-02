@@ -34,7 +34,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupViewPager()
-        setupHomeRecycler()
+        setupDiscountRecycler()
     }
     private fun setupViewPager(){
         val adapter = BannerAdapter(getBanner())
@@ -50,7 +50,9 @@ class FirstFragment : Fragment() {
         )
         return bannerList
     }
-    private fun setupHomeRecycler(){
-        binding.rvFatherHome.layoutManager = LinearLayoutManager(requireContext())
+    private fun setupDiscountRecycler(){
+        val adapter = DiscountAdapter(foodViewModel.getOffer)
+        binding.rvDiscountHome.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvDiscountHome.adapter = adapter
     }
 }
