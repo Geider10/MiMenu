@@ -65,7 +65,8 @@ class FirstFragment : Fragment(), OnClickHome {
     }
 
     override fun onClickVoucher(voucher: VoucherEntity) {
-        TODO("Not yet implemented")
+        val action = FirstFragmentDirections.actionFirstFragmentToVocuherDetailFragment(voucher)
+        findNavController().navigate(action)
     }
 
     private fun setupVoucherRecycler(){

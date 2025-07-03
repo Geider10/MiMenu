@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_firstFragment_to_foodDetailFragment"
             app:destination="@id/foodDetailFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_vocuherDetailFragment"
+            app:destination="@id/vocuherDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
@@ -51,6 +54,18 @@
         <action
             android:id="@+id/action_cartFragment_to_foodDetailFragment"
             app:destination="@id/foodDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vocuherDetailFragment"
+        android:name="com.example.mimenu.ui.home.VocuherDetailFragment"
+        android:label="Cupón"
+        tools:layout="@layout/fragment_vocuher_detail" >
+        <argument
+            android:name="voucher"
+            app:argType="com.example.mimenu.data.Entities.VoucherEntity"/>
+        <action
+            android:id="@+id/action_vocuherDetailFragment_to_firstFragment"
+            app:destination="@id/firstFragment"/>
     </fragment>
 
 </navigation>
