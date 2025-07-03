@@ -10,6 +10,6 @@
         android:icon="@drawable/ic_fastfood"/>
     <item
         android:id="@+id/cartFragment"
-        android:title="Pedido"
+        android:title="Carrito"
         android:icon="@drawable/ic_cart"/>
 </menu>
