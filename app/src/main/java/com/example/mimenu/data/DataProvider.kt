@@ -29,7 +29,6 @@ abstract class DataProvider {
             FoodEntity(9, "Café con 2 Medialunas de jamón y cheddar" ,3700, "2 medialunas jamón y cheddar de manteca acompañados de un café 330cc a elección o  jugo de naranja." , "Team Dulce", R.mipmap.coffe,5),
             FoodEntity(10, "Doble Cuarto Xl" ,11900, "Mega hamburguesa de doble carne, doble queso cheddar, cebollita, kétchup y mostaza en pan de papa.", "Hamburguesa", R.mipmap.hamburguer, 30),
             FoodEntity(11, "Sundae de Dulce de Leche" ,2900, "Helado de crema americana con salsa de dulce de leche.", "Sundae", R.mipmap.sundae,5),
-            FoodEntity(12, "Sundae de Dulce de Leche" ,2900, "Helado de crema americana con salsa de dulce de leche.", "Sundae", R.mipmap.sundae,5)
             )
         private val categoryList : List<CategoryEntity> = listOf(
             CategoryEntity(1, "Hamburguesa"),

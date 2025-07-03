@@ -1,6 +1,8 @@
 package com.example.mimenu.ui.buy
 
+import android.graphics.Paint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
@@ -21,14 +23,33 @@ class BuyAdapter (private val itemBuyList : List<ItemBuy>, private val buyFragme
         }
     }
     inner class FoodViewHolder (private val binding : FragmentItemBuyBinding) : RecyclerView.ViewHolder(binding.root){
+        var priceFood = 0
         fun bindFood (food : FoodEntity){
+            if(food.discount != null) {
+                val offer = (food.price * food.discount)/100
+                val priceOffer = food.price - offer
+                priceFood = priceOffer
+                binding.tvPriceRemoveItemBuy.visibility = View.VISIBLE
+                binding.tvDiscountItemBuy.visibility = View.VISIBLE
+            }else{
+                priceFood = food.price
+                binding.tvPriceRemoveItemBuy.visibility = View.GONE
+                binding.tvDiscountItemBuy.visibility = View.GONE
+            }
+
             binding.tvNameItemBuy.text = food.name
-            binding.tvPriceItemBuy.text = "$ " + food.price.toString()
+            formatPriceRemove(food.price)
+            binding.tvPriceItemBuy.text = "$ $priceFood"
+            binding.tvDiscountItemBuy.text = "${food.discount}% OFF"
             binding.imgItemBuy.setImageResource(food.img)
 
             binding.root.setOnClickListener{
                 buyFragment.onClick(food)
             }
+        }
+         private fun formatPriceRemove(priceRemove : Int) {
+            binding.tvPriceRemoveItemBuy.text = "$ $priceRemove"
+            binding.tvPriceRemoveItemBuy.paintFlags = binding.tvPriceRemoveItemBuy.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         }
     }
     override fun getItemViewType(position: Int): Int {

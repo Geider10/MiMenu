@@ -56,7 +56,7 @@ class SecondFragment : Fragment(), OnFoodClick {
     }
 
     override fun onClick(food: FoodEntity) {
-        val order = OrderEntity(name = food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1)
+        val order = OrderEntity(name = food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1, discount = food.discount)
         val action = SecondFragmentDirections.actionSecondFragmentToFoodDetailFragment(order,1)
         findNavController().navigate(action)
     }
@@ -79,7 +79,6 @@ class SecondFragment : Fragment(), OnFoodClick {
             binding.cgCategory.addView(chip)
         }
     }
-
 
     private fun createItemBuyList() : List<ItemBuy>{
         var itemBuyList = mutableListOf<ItemBuy>()//cada item es un categoryItem o foodItem
