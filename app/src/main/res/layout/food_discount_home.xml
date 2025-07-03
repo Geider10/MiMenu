@@ -33,7 +33,7 @@
                 tools:text="Mega Doble Big Bang Cheddar Huevo Picante"
                 />
             <TextView
-                android:id="@+id/tvPriceFDHome"
+                android:id="@+id/tvPriceRemoveFDHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_dark"
@@ -44,7 +44,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
                 <TextView
-                    android:id="@+id/tvPriceOfferFDHome"
+                    android:id="@+id/tvPriceFDHome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="$6780"

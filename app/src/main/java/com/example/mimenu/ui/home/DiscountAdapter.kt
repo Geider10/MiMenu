@@ -13,9 +13,9 @@ class DiscountAdapter(private val discountList : List<FoodEntity>, private val h
             val priceOffer = food.price - offer
             binding.ivFDHome.setImageResource(food.img)
             binding.tvNameFDHome.text = food.name
-            binding.tvPriceFDHome.text = "$ ${food.price}"
+            binding.tvPriceRemoveFDHome.text = "$ ${food.price}"
+            binding.tvPriceFDHome.text = "$ $priceOffer"
             binding.tvDiscountFDHome.text = "${food.discount}% OFF"
-            binding.tvPriceOfferFDHome.text = "$ $priceOffer"
 
             binding.root.setOnClickListener{
                 homeFragment.onClickDiscount(food)

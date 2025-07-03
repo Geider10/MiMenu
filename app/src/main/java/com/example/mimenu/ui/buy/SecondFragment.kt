@@ -57,7 +57,7 @@ class SecondFragment : Fragment(), OnFoodClick {
 
     override fun onClick(food: FoodEntity) {
         val order = OrderEntity(name = food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1)
-        val action = SecondFragmentDirections.actionSecondFragmentToFoodDetailFragment(order)
+        val action = SecondFragmentDirections.actionSecondFragmentToFoodDetailFragment(order,1)
         findNavController().navigate(action)
     }
 

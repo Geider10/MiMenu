@@ -58,10 +58,8 @@ class FirstFragment : Fragment(), OnClickHome {
     }
 
     override fun onClickDiscount(food: FoodEntity) {
-        val offer = (food.price * food.discount!!)/100
-        val priceOffer = food.price - offer
-        val order = OrderEntity(name= food.name, description = food.description, price = priceOffer, img = food.img, priceTotal = food.price, quantity = 1)
-        val action = FirstFragmentDirections.actionFirstFragmentToFoodDetailFragment(order)
+        val order = OrderEntity(name= food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1, discount = food.discount)
+        val action = FirstFragmentDirections.actionFirstFragmentToFoodDetailFragment(order,3)
         findNavController().navigate(action)
     }
 }

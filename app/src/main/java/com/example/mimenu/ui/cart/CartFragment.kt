@@ -50,7 +50,7 @@ class CartFragment : Fragment(), OnOrderClick {
     }
 
     override fun onClickEdit(order: OrderEntity) {
-        val action = CartFragmentDirections.actionCartFragmentToFoodDetailFragment(order)
+        val action = CartFragmentDirections.actionCartFragmentToFoodDetailFragment(order,2)
         findNavController().navigate(action)
     }
     override fun onClickDelete(order: OrderEntity) {

@@ -13,4 +13,5 @@ data class OrderEntity (
     val img : Int,
     val priceTotal : Int,
     val quantity : Int,
-        ): java.io.Serializable
+    val discount : Int? = null
+): java.io.Serializable
