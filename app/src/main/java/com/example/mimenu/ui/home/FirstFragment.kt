@@ -14,6 +14,7 @@ import com.example.mimenu.data.AppDataBase
 import com.example.mimenu.data.Entities.BannerEntity
 import com.example.mimenu.data.Entities.FoodEntity
 import com.example.mimenu.data.Entities.OrderEntity
+import com.example.mimenu.data.Entities.VoucherEntity
 import com.example.mimenu.databinding.FragmentFirstBinding
 import com.example.mimenu.view_model.FoodViewModel
 import me.relex.circleindicator.CircleIndicator3
@@ -36,6 +37,7 @@ class FirstFragment : Fragment(), OnClickHome {
 
         setupViewPager()
         setupDiscountRecycler()
+        setupVoucherRecycler()
     }
     private fun setupViewPager(){
         val adapter = BannerAdapter(getBanner())
@@ -56,10 +58,26 @@ class FirstFragment : Fragment(), OnClickHome {
         binding.rvDiscountHome.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvDiscountHome.adapter = adapter
     }
-
     override fun onClickDiscount(food: FoodEntity) {
         val order = OrderEntity(name= food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1, discount = food.discount)
         val action = FirstFragmentDirections.actionFirstFragmentToFoodDetailFragment(order,3)
         findNavController().navigate(action)
+    }
+
+    override fun onClickVoucher(voucher: VoucherEntity) {
+        TODO("Not yet implemented")
+    }
+
+    private fun setupVoucherRecycler(){
+        val adapter = VoucherAdapter(getAllVoucher(), this)
+        binding.rvVoucherHome.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        binding.rvVoucherHome.adapter =adapter
+    }
+    private fun getAllVoucher() : List<VoucherEntity>{
+        return listOf(
+            VoucherEntity(id = 0, name = "Combo Cuarto Deluxe + Combo Pollo Crispy", description = "", img = R.mipmap.c2a, code = "54-2353-1646", expiration = "03/07/2025"),
+            VoucherEntity(id = 1, name = "Combo Cuarto Deluxe + Combo Pollo Crispy", description = "", img = R.mipmap.c2a, code = "59-2353-1646", expiration = "10/08/2025"),
+            VoucherEntity(id = 2, name = "Combo Cuarto Deluxe + Combo Pollo Crispy", description = "", img = R.mipmap.c2a, code = "42-2353-1646", expiration = "20/09/2025")
+        )
     }
 }

@@ -5,6 +5,6 @@ data class VoucherEntity (
     val name : String,
     val description : String,
     val img: Int,
-    val valueQR : String,
+    val code : String,
     val expiration : String
         ) : java.io.Serializable
