@@ -7,7 +7,7 @@
     android:layout_width="wrap_content">
     <com.google.android.material.card.MaterialCardView
         android:layout_width="165dp"
-        android:layout_height="170dp"
+        android:layout_height="180dp"
         app:cardCornerRadius="4dp"
         android:layout_marginRight="8dp">
         <LinearLayout
@@ -18,9 +18,7 @@
                 android:id="@+id/ivVoucherHome"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/c2a"
-                android:background="@color/orange"/>
+                tools:background="@mipmap/h3"/>
         </LinearLayout>
 
 

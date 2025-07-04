@@ -8,8 +8,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:scaleType="centerCrop"
-        tools:background="@color/yellow_dark"
+        tools:background="@mipmap/b44"
         android:id="@+id/imgBannerHome"/>
 
 </LinearLayout>

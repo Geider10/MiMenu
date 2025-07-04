@@ -43,7 +43,7 @@ class VocuherDetailFragment : Fragment() {
     private fun setDataVoucher() {
         binding.llContentCode.visibility = View.GONE
 
-        binding.ivVoucherDetail.setImageResource(voucher.img)
+        binding.ivVoucherDetail.setBackgroundResource(voucher.img)
         binding.tvNameVoucherDetail.text = voucher.name
         binding.tvDescriptionVoucherDetail.text = voucher.description
         binding.tvCodeVoucherDetail.text = voucher.code

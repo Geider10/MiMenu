@@ -9,7 +9,7 @@ import com.example.mimenu.databinding.VoucherItemHomeBinding
 class VoucherAdapter(private val voucherList : List<VoucherEntity>, private val homeFragment: FirstFragment) : RecyclerView.Adapter<VoucherAdapter.VoucherViewHolder>() {
     inner class VoucherViewHolder(private val binding: VoucherItemHomeBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(voucher : VoucherEntity){
-            binding.ivVoucherHome.setImageResource(voucher.img)
+            binding.ivVoucherHome.setBackgroundResource(voucher.img)
 
             binding.root.setOnClickListener{
                 homeFragment.onClickVoucher(voucher)

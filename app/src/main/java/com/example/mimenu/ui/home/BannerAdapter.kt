@@ -9,7 +9,7 @@ import com.example.mimenu.databinding.BannerItemHomeBinding
 class BannerAdapter (private var bannerList : List<BannerEntity>) : RecyclerView.Adapter<BannerAdapter.BannerViewHolder>(){
     inner class BannerViewHolder(private val binding : BannerItemHomeBinding):RecyclerView.ViewHolder(binding.root){
         fun setValues(banner : BannerEntity){
-            binding.imgBannerHome.setImageResource(banner.img)
+            binding.imgBannerHome.setBackgroundResource(banner.img)
         }
     }
     //infla el layout de los elementos de la lista
