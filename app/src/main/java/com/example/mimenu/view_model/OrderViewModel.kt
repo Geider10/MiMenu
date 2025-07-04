@@ -3,14 +3,13 @@ package com.example.mimenu.view_model
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.room.Index.Order
 import com.example.mimenu.data.Entities.OrderEntity
-import com.example.mimenu.repository.Repository
+import com.example.mimenu.data.repository.AppRepository
 import kotlinx.coroutines.launch
 
 class OrderViewModel: ViewModel() {
 
-    private val repo = Repository()
+    private val repo = AppRepository()
 
     fun create(order: OrderEntity){
         viewModelScope.launch {

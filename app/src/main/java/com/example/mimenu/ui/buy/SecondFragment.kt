@@ -6,32 +6,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
-import androidx.core.view.setPadding
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.Entities.FoodEntity
 import com.example.mimenu.R
 import com.example.mimenu.data.Entities.CategoryEntity
 import com.example.mimenu.data.Entities.OrderEntity
-import com.example.mimenu.databinding.FragmentItemBuyBinding
 import com.example.mimenu.databinding.FragmentSecondBinding
-import com.example.mimenu.view_model.CategoryViewModel
-import com.example.mimenu.view_model.FoodViewModel
+import com.example.mimenu.view_model.AppViewModel
 import com.google.android.material.chip.Chip
 
 class SecondFragment : Fragment(), OnFoodClick {
 
     private lateinit var binding : FragmentSecondBinding
-    private val foodViewModel by viewModels<FoodViewModel>()
-    private val categoryViewModel by viewModels<CategoryViewModel>()
+    private val appViewModel by viewModels<AppViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +36,7 @@ class SecondFragment : Fragment(), OnFoodClick {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupChipGroup(categoryViewModel.getAll)
+        setupChipGroup(appViewModel.getAllCategories)
         setupRecyclerFood()
     }
     private fun setupRecyclerFood(){
@@ -61,17 +52,18 @@ class SecondFragment : Fragment(), OnFoodClick {
         findNavController().navigate(action)
     }
 
-    private fun setupChipGroup(categoryList : List<CategoryEntity>){
-        categoryList.forEach{ tag ->
+    private fun setupChipGroup(categoryList : List<String>){
+        categoryList.forEach{name   ->
             val chip = Chip(requireContext())
-            chip.text = tag.name
+            chip.id = 1
+            chip.text = name
             chip.isCheckable = true
             chip.isCheckedIconVisible = false
             chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_dark))
             chip.chipBackgroundColor = ContextCompat.getColorStateList(requireContext(), R.color.chip_category_selector)
-            if(tag.id == 1){
-                chip.isChecked = true
-            }
+            //if(tag.id == 1){
+            //    chip.isChecked = true
+            // }
 
             chip.setOnClickListener{
                 Log.d("category-item", chip.text.toString())
@@ -81,13 +73,13 @@ class SecondFragment : Fragment(), OnFoodClick {
     }
 
     private fun createItemBuyList() : List<ItemBuy>{
-        var itemBuyList = mutableListOf<ItemBuy>()//cada item es un categoryItem o foodItem
-        val foodList = foodViewModel.getAll
-        val categoryList = categoryViewModel.getAll
+        var itemBuyList = mutableListOf<ItemBuy>()
+        val foodList = appViewModel.getAllFoods
+        val categoryList = appViewModel.getAllCategories
 
         categoryList.forEach{ c ->
-            itemBuyList.add(ItemBuy.CategoryItem(c.id,c.name))
-            val foodFilter = foodList.filter { it.category == c.name }
+            itemBuyList.add(ItemBuy.CategoryItem(c))
+            val foodFilter = foodList.filter { it.category == c }
             foodFilter.forEach{ f ->
                 itemBuyList.add(ItemBuy.FoodItem(f))
             }

@@ -62,7 +62,7 @@
         tools:layout="@layout/fragment_vocuher_detail" >
         <argument
             android:name="voucher"
-            app:argType="com.example.mimenu.data.Entities.VoucherEntity"/>
+            app:argType="com.example.mimenu.data.model.VoucherModel"/>
         <action
             android:id="@+id/action_vocuherDetailFragment_to_firstFragment"
             app:destination="@id/firstFragment"/>

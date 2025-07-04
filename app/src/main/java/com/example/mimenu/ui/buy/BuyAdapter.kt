@@ -18,8 +18,8 @@ const val FOOD = 1
 
 class BuyAdapter (private val itemBuyList : List<ItemBuy>, private val buyFragment : SecondFragment): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     inner class CategoryViewHolder (private val binding : CategoryItemBuyBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bindCategory(category : CategoryEntity){
-            binding.tvCategoryItemBuy.text = category.name
+        fun bindCategory(category : String){
+            binding.tvCategoryItemBuy.text = category
         }
     }
     inner class FoodViewHolder (private val binding : FragmentItemBuyBinding) : RecyclerView.ViewHolder(binding.root){
@@ -74,7 +74,7 @@ class BuyAdapter (private val itemBuyList : List<ItemBuy>, private val buyFragme
         when(val item = itemBuyList[position]){
             is ItemBuy.CategoryItem ->{
                 var holder = holder as CategoryViewHolder
-                holder.bindCategory(CategoryEntity(item.id,item.name))
+                holder.bindCategory(item.category)
             }
             is ItemBuy.FoodItem ->{
                 var holder = holder as FoodViewHolder

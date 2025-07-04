@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.Entities.BannerEntity
 import com.example.mimenu.databinding.BannerItemHomeBinding
 
-class BannerAdapter (private var bannerList : List<BannerEntity>) : RecyclerView.Adapter<BannerAdapter.BannerViewHolder>(){
+class BannerAdapter (private var bannerList : List<Int>) : RecyclerView.Adapter<BannerAdapter.BannerViewHolder>(){
     inner class BannerViewHolder(private val binding : BannerItemHomeBinding):RecyclerView.ViewHolder(binding.root){
-        fun setValues(banner : BannerEntity){
-            binding.imgBannerHome.setBackgroundResource(banner.img)
+        fun setValues(banner : Int){
+            binding.imgBannerHome.setBackgroundResource(banner)
         }
     }
     //infla el layout de los elementos de la lista

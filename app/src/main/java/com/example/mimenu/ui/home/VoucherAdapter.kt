@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.Entities.VoucherEntity
+import com.example.mimenu.data.model.VoucherModel
 import com.example.mimenu.databinding.VoucherItemHomeBinding
 
-class VoucherAdapter(private val voucherList : List<VoucherEntity>, private val homeFragment: FirstFragment) : RecyclerView.Adapter<VoucherAdapter.VoucherViewHolder>() {
+class VoucherAdapter(private val voucherList : List<VoucherModel>, private val homeFragment: FirstFragment) : RecyclerView.Adapter<VoucherAdapter.VoucherViewHolder>() {
     inner class VoucherViewHolder(private val binding: VoucherItemHomeBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(voucher : VoucherEntity){
+        fun bind(voucher : VoucherModel){
             binding.ivVoucherHome.setBackgroundResource(voucher.img)
 
             binding.root.setOnClickListener{
