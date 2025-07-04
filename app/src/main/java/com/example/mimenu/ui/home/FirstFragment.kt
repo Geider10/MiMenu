@@ -18,6 +18,8 @@ import com.example.mimenu.data.Entities.VoucherEntity
 import com.example.mimenu.databinding.FragmentFirstBinding
 import com.example.mimenu.view_model.FoodViewModel
 import me.relex.circleindicator.CircleIndicator3
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class FirstFragment : Fragment(), OnClickHome {
 
@@ -76,9 +78,92 @@ class FirstFragment : Fragment(), OnClickHome {
     }
     private fun getAllVoucher() : List<VoucherEntity>{
         return listOf(
-            VoucherEntity(id = 0, name = "Combo Cuarto Deluxe + Combo Pollo Crispy", description = "", img = R.mipmap.c2a, code = "54-2353-1646", expiration = "03/07/2025"),
-            VoucherEntity(id = 1, name = "Combo Cuarto Deluxe + Combo Pollo Crispy", description = "", img = R.mipmap.c2a, code = "59-2353-1646", expiration = "10/08/2025"),
-            VoucherEntity(id = 2, name = "Combo Cuarto Deluxe + Combo Pollo Crispy", description = "", img = R.mipmap.c2a, code = "42-2353-1646", expiration = "20/09/2025")
+            VoucherEntity(
+                id = 1,
+                name = "Combo Mega Doble Big Bang + Sundae",
+                description = "Pedí la Mega Doble Big Bang y te llevás un Sundae gratis. Ideal para campeones del hambre.",
+                img = R.mipmap.hamburguer,
+                code = "54-2353-1646",
+                expiration = stringToLocalDate("10/08/2025"),
+                category = "Las + poderosas"
+            ),
+            VoucherEntity(
+                id = 2,
+                name = "Epica Huevo + Cuarto XL",
+                description = "Combo de poder con dos hamburguesas icónicas. 35% OFF solo por tiempo limitado.",
+                img = R.mipmap.hamburguer,
+                code = "78-8472-1023",
+                expiration = stringToLocalDate("15/08/2025"),
+                category = "Las + poderosas"
+            ),
+            VoucherEntity(
+                id = 3,
+                name = "Big Bang Cheddar + Bebida + Sundae",
+                description = "El trío legendario con 40% de descuento. ¿Vas a resistirte?",
+                img = R.mipmap.hamburguer,
+                code = "61-9294-3847",
+                expiration = stringToLocalDate("20/08/2025"),
+                category = "Las + poderosas"
+            ),
+            VoucherEntity(
+                id = 4,
+                name = "2 Combos Doble Cuarto XL",
+                description = "Ideal para dos. Incluye 2 hamburguesas, 2 papas y 2 bebidas. A solo $14500.",
+                img = R.mipmap.hamburguer,
+                code = "73-1846-5821",
+                expiration = stringToLocalDate("10/09/2025"),
+                category = "Para compartir"
+            ),
+            VoucherEntity(
+                id = 5,
+                name = "Combo Dulce x2 + Café",
+                description = "2 medialunas rellenas + 2 cafés. Compartí una mañana feliz.",
+                img = R.mipmap.coffe,
+                code = "84-9247-1172",
+                expiration = stringToLocalDate("10/09/2025"),
+                category = "Para compartir"
+            ),
+            VoucherEntity(
+                id = 6,
+                name = "Sundae x3 Pack",
+                description = "El pack perfecto para amigos dulceros. Elegí 3 sundaes a elección por $6900.",
+                img = R.mipmap.sundae,
+                code = "66-3939-1029",
+                expiration = stringToLocalDate("20/10/2025"),
+                category = "Para compartir"
+            ),
+            VoucherEntity(
+                id = 7,
+                name = "Café + 2 Medialunas rellenas",
+                description = "Combo especial dulce por la tarde. Con 15% de descuento.",
+                img = R.mipmap.coffe,
+                code = "35-4821-3991",
+                expiration = stringToLocalDate("12/09/2025"),
+                category = "Algo dulce"
+            ),
+            VoucherEntity(
+                id = 8,
+                name = "Sundae + Medialuna",
+                description = "¿Dulce sobre dulce? Helado y medialuna por solo $3100.",
+                img = R.mipmap.sundae,
+                code = "49-2783-8872",
+                expiration = stringToLocalDate("18/09/2025"),
+                category = "Algo dulce"
+            ),
+            VoucherEntity(
+                id = 9,
+                name = "Café con medialuna gratis",
+                description = "Comprás un café y te llevás una medialuna sin costo. Porque sí.",
+                img = R.mipmap.coffe,
+                code = "58-3021-0042",
+                expiration = stringToLocalDate("25/09/2025"),
+                category = "Algo dulce"
+            )
         )
+
+    }
+    fun stringToLocalDate(date : String) : LocalDate{
+        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyy")
+        return LocalDate.parse(date,formatter)
     }
 }
