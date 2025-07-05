@@ -3,7 +3,6 @@ package com.example.mimenu.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mimenu.data.Entities.VoucherEntity
 import com.example.mimenu.data.model.VoucherModel
 import com.example.mimenu.databinding.VoucherItemHomeBinding
 

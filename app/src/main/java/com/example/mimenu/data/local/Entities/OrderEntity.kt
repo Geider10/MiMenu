@@ -1,4 +1,4 @@
-package com.example.mimenu.data.Entities
+package com.example.mimenu.data.local.Entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

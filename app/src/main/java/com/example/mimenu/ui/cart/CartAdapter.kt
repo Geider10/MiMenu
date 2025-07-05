@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mimenu.data.Entities.OrderEntity
+import com.example.mimenu.data.local.Entities.OrderEntity
 import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.databinding.OrderItemCartBinding
 

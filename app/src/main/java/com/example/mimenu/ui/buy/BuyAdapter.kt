@@ -4,11 +4,7 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mimenu.data.Entities.CategoryEntity
-import com.example.mimenu.data.Entities.FoodEntity
 import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.databinding.CategoryItemBuyBinding
 import com.example.mimenu.databinding.FragmentItemBuyBinding

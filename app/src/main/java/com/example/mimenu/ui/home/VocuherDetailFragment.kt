@@ -7,15 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import com.example.mimenu.R
-import com.example.mimenu.data.Entities.VoucherEntity
 import com.example.mimenu.data.model.VoucherModel
 import com.example.mimenu.databinding.FragmentVocuherDetailBinding
 import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.Base64.Encoder
 
 class VocuherDetailFragment : Fragment() {
 

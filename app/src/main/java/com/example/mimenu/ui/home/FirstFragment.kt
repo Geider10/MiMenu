@@ -8,18 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mimenu.R
-import com.example.mimenu.data.Entities.BannerEntity
-import com.example.mimenu.data.Entities.FoodEntity
-import com.example.mimenu.data.Entities.OrderEntity
-import com.example.mimenu.data.Entities.VoucherEntity
 import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.data.model.VoucherModel
 import com.example.mimenu.databinding.FragmentFirstBinding
 import com.example.mimenu.view_model.AppViewModel
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class FirstFragment : Fragment(), OnClickHome {
 
