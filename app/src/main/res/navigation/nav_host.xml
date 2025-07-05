@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_food_detail" >
         <argument
             android:name="order"
-            app:argType="com.example.mimenu.data.Entities.OrderEntity"/>
+            app:argType="com.example.mimenu.data.model.OrderModel"/>
         <argument
             android:name="viewType"
             app:argType="integer"/>

@@ -1,9 +1,10 @@
 package com.example.mimenu.ui.cart
 
 import com.example.mimenu.data.Entities.OrderEntity
+import com.example.mimenu.data.model.OrderModel
 
 interface OnOrderClick {
-    fun onClickEdit(order : OrderEntity)
-    fun onClickDelete(order: OrderEntity)
-    fun onClickIcon(order: OrderEntity)
+    fun onClickEdit(order : OrderModel)
+    fun onClickDelete(order: OrderModel)
+    fun onClickIcon(order: OrderModel)
 }

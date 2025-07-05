@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.Entities.FoodEntity
+import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.databinding.FoodDiscountHomeBinding
 
-class DiscountAdapter(private val discountList : List<FoodEntity>, private val homeFragment: FirstFragment): RecyclerView.Adapter<DiscountAdapter.DiscountViewHolder>() {
+class DiscountAdapter(private val discountList : List<FoodModel>, private val homeFragment: FirstFragment): RecyclerView.Adapter<DiscountAdapter.DiscountViewHolder>() {
     inner class DiscountViewHolder(private val binding : FoodDiscountHomeBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(food : FoodEntity){
+        fun bind(food : FoodModel){
             val offer =(food.price * food.discount!!) / 100
             val priceOffer = food.price - offer
             binding.ivFDHome.setImageResource(food.img)

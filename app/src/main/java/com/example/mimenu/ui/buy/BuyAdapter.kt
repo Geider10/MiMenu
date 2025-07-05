@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.Entities.CategoryEntity
 import com.example.mimenu.data.Entities.FoodEntity
+import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.databinding.CategoryItemBuyBinding
 import com.example.mimenu.databinding.FragmentItemBuyBinding
 
@@ -17,6 +18,7 @@ const val CATEGORY = 0
 const val FOOD = 1
 
 class BuyAdapter (private val itemBuyList : List<ItemBuy>, private val buyFragment : SecondFragment): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+
     inner class CategoryViewHolder (private val binding : CategoryItemBuyBinding) : RecyclerView.ViewHolder(binding.root){
         fun bindCategory(category : String){
             binding.tvCategoryItemBuy.text = category
@@ -24,7 +26,7 @@ class BuyAdapter (private val itemBuyList : List<ItemBuy>, private val buyFragme
     }
     inner class FoodViewHolder (private val binding : FragmentItemBuyBinding) : RecyclerView.ViewHolder(binding.root){
         var priceFood = 0
-        fun bindFood (food : FoodEntity){
+        fun bindFood (food : FoodModel){
             if(food.discount != null) {
                 val offer = (food.price * food.discount)/100
                 val priceOffer = food.price - offer

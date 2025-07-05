@@ -7,24 +7,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mimenu.R
-import com.example.mimenu.data.Entities.OrderEntity
+import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.databinding.FragmentFoodDetailBinding
-import com.example.mimenu.view_model.OrderViewModel
-import kotlin.math.log
+import com.example.mimenu.view_model.AppViewModel
 
 
 class FoodDetailFragment : Fragment() {
 
     private lateinit var binding : FragmentFoodDetailBinding
-    private val orderViewModel by viewModels<OrderViewModel>()
-
-    private lateinit var order : OrderEntity
+    private val appViewModel by viewModels<AppViewModel>()
+    private lateinit var order : OrderModel
     private var quantityFood = 0
     private var priceFood = 0
     private var viewType = 0
@@ -77,6 +74,7 @@ class FoodDetailFragment : Fragment() {
 
         binding.tvPriceTotalFoodDetail.text = formatPriceTotalFood(priceFood,quantityFood)
         binding.tvQuantityFoodDetail.text = quantityFood.toString()
+        Log.i("Food Detail", "Descuento : ${order.discount}")
     }
     private fun deleteFood(){
         if(quantityFood > 1){
@@ -107,15 +105,15 @@ class FoodDetailFragment : Fragment() {
         val orderCopy = order.copy(priceTotal = priceTotal.toInt(), quantity = quantity.toInt())
 
         if(viewType == 1){
-            orderViewModel.create(orderCopy)
+            appViewModel.createOrder(orderCopy)
             findNavController().navigate(R.id.action_foodDetailFragment_to_secondFragment)
             Toast.makeText(requireContext(),"Agregaste un pedido con éxito", Toast.LENGTH_LONG).show()
         }else if(viewType == 2){
-            orderViewModel.update(orderCopy)
+            appViewModel.updateOrder(orderCopy)
             findNavController().navigate(R.id.action_foodDetailFragment_to_cartFragment)
             Toast.makeText(requireContext(),"Actualizaste un pedido con éxito", Toast.LENGTH_LONG).show()
         }else if(viewType == 3){
-            orderViewModel.create(orderCopy)
+            appViewModel.createOrder(orderCopy)
             findNavController().navigate(R.id.action_foodDetailFragment_to_firstFragment)
             Toast.makeText(requireContext(),"Agregaste un pedido con éxito", Toast.LENGTH_SHORT).show()
         }

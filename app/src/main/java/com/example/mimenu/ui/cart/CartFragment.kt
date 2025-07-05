@@ -9,17 +9,16 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mimenu.data.Entities.OrderEntity
-import com.example.mimenu.R
+import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.databinding.FragmentCartBinding
-import com.example.mimenu.view_model.OrderViewModel
+import com.example.mimenu.view_model.AppViewModel
 
 
 class CartFragment : Fragment(), OnOrderClick {
 
     private lateinit var binding: FragmentCartBinding
-    private val orderViewModel by viewModels<OrderViewModel>()
-
+    private val appViewModel by viewModels<AppViewModel>()
+    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,7 +36,7 @@ class CartFragment : Fragment(), OnOrderClick {
         }
     }
     private fun setDataRecycler(){
-        orderViewModel.getAll.observe(viewLifecycleOwner){orderList ->
+        appViewModel.getAllOrders.observe(viewLifecycleOwner){orderList ->
             var adapter = CartAdapter(this)
             adapter.setOrderList(orderList)
             binding.rvCart.layoutManager = LinearLayoutManager(requireContext())
@@ -49,16 +48,16 @@ class CartFragment : Fragment(), OnOrderClick {
 
     }
 
-    override fun onClickEdit(order: OrderEntity) {
+    override fun onClickEdit(order: OrderModel) {
         val action = CartFragmentDirections.actionCartFragmentToFoodDetailFragment(order,2)
         findNavController().navigate(action)
     }
-    override fun onClickDelete(order: OrderEntity) {
+    override fun onClickDelete(order: OrderModel) {
         Toast.makeText(requireContext(), "Eliminaste un pedido con éxito", Toast.LENGTH_LONG).show()
-        orderViewModel.delete(order)
+        appViewModel.deleteOrder(order)
     }
-    override fun onClickIcon(order: OrderEntity) {
-        orderViewModel.update(order)
+    override fun onClickIcon(order: OrderModel) {
+        appViewModel.updateOrder(order)
     }
     private fun onClickPay(){
         Toast.makeText(requireContext(), "Pagaste con éxito", Toast.LENGTH_SHORT).show()

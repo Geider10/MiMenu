@@ -8,11 +8,12 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.mimenu.data.Entities.OrderEntity
+import com.example.mimenu.data.model.OrderModel
 
 @Dao
 interface OrderDao {
     @Query("SELECT * FROM `order`")
-    fun getAll() : LiveData<List<OrderEntity>>
+    fun getAll() : LiveData<List<OrderModel>>
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun create(order : OrderEntity)
     @Delete

@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.Entities.OrderEntity
+import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.databinding.OrderItemCartBinding
 
 class CartAdapter(private val cartFragment : CartFragment) : RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
 
-    private var orderList  = emptyList<OrderEntity>()
+    private var orderList  = emptyList<OrderModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -25,7 +26,7 @@ class CartAdapter(private val cartFragment : CartFragment) : RecyclerView.Adapte
     override fun getItemCount() : Int = orderList.size
 
     inner class CartViewHolder(private val binding : OrderItemCartBinding) : RecyclerView.ViewHolder(binding.root){
-        fun setValues(order : OrderEntity){
+        fun setValues(order : OrderModel){
             binding.imgItemCart.setImageResource(order.img)
             binding.tvNameItemCart.text = order.name
             binding.tvQuantityItemCart.text = order.quantity.toString()
@@ -63,7 +64,7 @@ class CartAdapter(private val cartFragment : CartFragment) : RecyclerView.Adapte
         }
     }
     //@SuppressLint("NotifyDataSetChanged")
-    fun setOrderList(orderList : List<OrderEntity>){
+    fun setOrderList(orderList : List<OrderModel>){
         this.orderList = orderList
         //notifyDataSetChanged()
     }

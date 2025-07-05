@@ -13,6 +13,8 @@ import com.example.mimenu.data.Entities.BannerEntity
 import com.example.mimenu.data.Entities.FoodEntity
 import com.example.mimenu.data.Entities.OrderEntity
 import com.example.mimenu.data.Entities.VoucherEntity
+import com.example.mimenu.data.model.FoodModel
+import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.data.model.VoucherModel
 import com.example.mimenu.databinding.FragmentFirstBinding
 import com.example.mimenu.view_model.AppViewModel
@@ -35,11 +37,11 @@ class FirstFragment : Fragment(), OnClickHome {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupViewPager()
+        setupBannerViewPager()
         setupDiscountRecycler()
         setupVoucherRecycler()
     }
-    private fun setupViewPager(){
+    private fun setupBannerViewPager(){
         val adapter = BannerAdapter(appViewModel.getAllBanners)
         binding.viewPager.adapter = adapter
         binding.indicator.setViewPager(binding.viewPager)
@@ -50,21 +52,19 @@ class FirstFragment : Fragment(), OnClickHome {
         binding.rvDiscountHome.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvDiscountHome.adapter = adapter
     }
-    override fun onClickDiscount(food: FoodEntity) {
-        val order = OrderEntity(name= food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1, discount = food.discount)
+    override fun onClickDiscount(food: FoodModel) {
+        val order = OrderModel(name= food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1, discount = food.discount)
         val action = FirstFragmentDirections.actionFirstFragmentToFoodDetailFragment(order,3)
         findNavController().navigate(action)
     }
-
-    override fun onClickVoucher(voucher: VoucherModel) {
-        val action = FirstFragmentDirections.actionFirstFragmentToVocuherDetailFragment(voucher)
-        findNavController().navigate(action)
-    }
-
     private fun setupVoucherRecycler(){
         val adapter = VoucherAdapter(appViewModel.getAllVouchers, this)
         binding.rvVoucherHome.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         binding.rvVoucherHome.adapter =adapter
+    }
+    override fun onClickVoucher(voucher: VoucherModel) {
+        val action = FirstFragmentDirections.actionFirstFragmentToVocuherDetailFragment(voucher)
+        findNavController().navigate(action)
     }
 
 }

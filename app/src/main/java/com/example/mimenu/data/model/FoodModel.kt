@@ -7,5 +7,5 @@ data class FoodModel (
     val description : String,
     val category : String,
     val img : Int,
-    val discount : Int?
+    val discount : Int? = null
         ): java.io.Serializable

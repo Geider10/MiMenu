@@ -4,6 +4,7 @@ import com.example.mimenu.R
 import com.example.mimenu.data.Entities.BannerEntity
 import com.example.mimenu.data.Entities.CategoryEntity
 import com.example.mimenu.data.Entities.FoodEntity
+import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.data.model.VoucherModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -11,12 +12,11 @@ import java.time.format.DateTimeFormatter
 abstract class DataMockProvider {
 
     companion object {
-        fun getAllFood() : List<FoodEntity>{
+        fun getAllFoods() : List<FoodModel>{
             return foodList
         }
-        fun getFoodOffer() : List<FoodEntity>{
-            var foodFilter = foodList.filter { f -> f.discount != null }.subList(0,4)
-            return  foodFilter
+        fun getFoodOffer() : List<FoodModel>{
+            return foodList.filter { f -> f.discount != null }.subList(0,2)
         }
         fun getAllCategories() : List<String>{
             return  categoryList
@@ -28,18 +28,16 @@ abstract class DataMockProvider {
             return  voucherList
         }
 
-        private val foodList : List<FoodEntity> = listOf(
-            FoodEntity(1, "Doble Cuarto Xl" ,11900, "Mega hamburguesa de doble carne, doble queso cheddar, cebollita, kétchup y mostaza en pan de papa.", "Hamburguesa", R.mipmap.hamburguer),
-            FoodEntity(2, "Epica Huevo" ,11300, "Mega hamburguesa de carne, queso cheddar, panceta, huevo, cebolla grillada y barbacoa ahumada en pan de papa.", "Hamburguesa", R.mipmap.hamburguer),
-            FoodEntity(3, "Mega Doble Big Bang Cheddar" ,13900, "Mega hamburguesa de doble carne, queso cheddar, bacon, cebollita, kétchup y salsa cheddar en pan de papa. ", "Hamburguesa", R.mipmap.hamburguer, 40),
-            FoodEntity(4, "Sundae de Chocalate" ,2900, "Helado de crema americana con salsa de chocolate.", "Sundae", R.mipmap.sundae, 20),
-            FoodEntity(5, "Sundae de Frutilla" ,2900, "Helado de crema americana con salsa de frutilla.", "Sundae", R.mipmap.sundae),
-            FoodEntity(6, "Sundae de Dulce de Leche" ,2900, "Helado de crema americana con salsa de dulce de leche.", "Sundae", R.mipmap.sundae),
-            FoodEntity(7, "Café con 2 Medialunas" ,2399, "2 medialunas de manteca acompañadas de un café 330cc a elección o jugo de naranja." , "Team Dulce", R.mipmap.coffe),
-            FoodEntity(8, "Medialuna" ,1000, "Medialuna de manteca." , "Team Dulce", R.mipmap.coffe),
-            FoodEntity(9, "Café con 2 Medialunas de jamón y cheddar" ,3700, "2 medialunas jamón y cheddar de manteca acompañados de un café 330cc a elección o  jugo de naranja." , "Team Dulce", R.mipmap.coffe,5),
-            FoodEntity(10, "Doble Cuarto Xl" ,11900, "Mega hamburguesa de doble carne, doble queso cheddar, cebollita, kétchup y mostaza en pan de papa.", "Hamburguesa", R.mipmap.hamburguer, 30),
-            FoodEntity(11, "Sundae de Dulce de Leche" ,2900, "Helado de crema americana con salsa de dulce de leche.", "Sundae", R.mipmap.sundae,5),
+        private val foodList : List<FoodModel> = listOf(
+            FoodModel(1, "Doble Cuarto Xl" ,11900, "Mega hamburguesa de doble carne, doble queso cheddar, cebollita, kétchup y mostaza en pan de papa.", "Hamburguesa", R.mipmap.hamburguer),
+            FoodModel(2, "Epica Huevo" ,11300, "Mega hamburguesa de carne, queso cheddar, panceta, huevo, cebolla grillada y barbacoa ahumada en pan de papa.", "Hamburguesa", R.mipmap.hamburguer),
+            FoodModel(3, "Mega Doble Big Bang Cheddar" ,13900, "Mega hamburguesa de doble carne, queso cheddar, bacon, cebollita, kétchup y salsa cheddar en pan de papa. ", "Hamburguesa", R.mipmap.hamburguer, 40),
+            FoodModel(4, "Sundae de Chocalate" ,2900, "Helado de crema americana con salsa de chocolate.", "Sundae", R.mipmap.sundae, 20),
+            FoodModel(5, "Sundae de Frutilla" ,2900, "Helado de crema americana con salsa de frutilla.", "Sundae", R.mipmap.sundae),
+            FoodModel(6, "Sundae de Dulce de Leche" ,2900, "Helado de crema americana con salsa de dulce de leche.", "Sundae", R.mipmap.sundae),
+            FoodModel(7, "Café con 2 Medialunas" ,2399, "2 medialunas de manteca acompañadas de un café 330cc a elección o jugo de naranja." , "Team Dulce", R.mipmap.coffe),
+            FoodModel(8, "Medialuna" ,1000, "Medialuna de manteca." , "Team Dulce", R.mipmap.coffe),
+            FoodModel(9, "Café con 2 Medialunas de jamón y cheddar" ,3700, "2 medialunas jamón y cheddar de manteca acompañados de un café 330cc a elección o  jugo de naranja." , "Team Dulce", R.mipmap.coffe,5),
             )
         private val categoryList : List<String> = listOf(
             "Hamburguesa",

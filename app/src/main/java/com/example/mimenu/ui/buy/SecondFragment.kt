@@ -15,6 +15,8 @@ import com.example.mimenu.data.Entities.FoodEntity
 import com.example.mimenu.R
 import com.example.mimenu.data.Entities.CategoryEntity
 import com.example.mimenu.data.Entities.OrderEntity
+import com.example.mimenu.data.model.FoodModel
+import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.databinding.FragmentSecondBinding
 import com.example.mimenu.view_model.AppViewModel
 import com.google.android.material.chip.Chip
@@ -46,8 +48,8 @@ class SecondFragment : Fragment(), OnFoodClick {
         binding.rvFoodBuy.adapter = adapter
     }
 
-    override fun onClick(food: FoodEntity) {
-        val order = OrderEntity(name = food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1, discount = food.discount)
+    override fun onClick(food: FoodModel) {
+        val order = OrderModel(name = food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1, discount = food.discount)
         val action = SecondFragmentDirections.actionSecondFragmentToFoodDetailFragment(order,1)
         findNavController().navigate(action)
     }
