@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,62 +9,110 @@
     app:cardCornerRadius="12dp"
     android:layout_marginBottom="12dp"
     android:id="@+id/itemCart">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:scaleType="fitCenter"
-            tools:background="@color/yellow_dark"
-            tools:src="@mipmap/sundae"
-            android:id="@+id/imgItemCart" />
-        <!--    data order item-->
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                tools:background="@color/yellow_dark"
+                android:id="@+id/imgItemCart" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Mega Doble Big Bang"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/tvNameItemCart"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_dark"
+                        tools:text="@string/text_cross"
+                        android:textSize="12dp"
+                        android:layout_marginRight="4dp"
+                        android:id="@+id/tvPriceRemoveItemCart"
+                        />
+                    <TextView
+                        android:id="@+id/tvDiscountItemCart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="40%"
+                        android:textColor="@color/yellow_dark"
+                        android:textSize="12dp"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tvPriceItemCart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="$ 13.9000"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?android:attr/listDivider" />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="16dp">
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Mega Doble Big Bang"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:id="@+id/tvNameItemCart"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text_dark"
-                android:text="@string/text_edit"
+                android:textColor="@color/yellow_dark"
+                android:text="Modificar"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvNameItemCart"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:id="@+id/tvEditOrderCart"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_dark"
-                android:text="@string/text_delete"
+                android:textColor="@color/yellow_dark"
+                android:text="Eliminar"
                 android:textSize="12dp"
                 android:layout_marginStart="12sp"
                 android:layout_marginTop="4dp"
                 app:layout_constraintStart_toEndOf="@+id/tvEditOrderCart"
-                app:layout_constraintTop_toBottomOf="@+id/tvNameItemCart"
+                app:layout_constraintEnd_toStartOf="@+id/contenBtnItemCart"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:id="@+id/tvDeleteOrderCart"
                 />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/contenBtnItemCart">
 
                 <Button
                     android:id="@+id/btnSubtractOrder"
@@ -89,20 +138,9 @@
                     app:icon="@drawable/ic_add"
                     />
             </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                tools:text="$ 13.9000"
-                android:textColor="@color/black"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/tvPriceItemCart"
-                />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </LinearLayout>
+
+
 
 </com.google.android.material.card.MaterialCardView>

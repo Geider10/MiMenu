@@ -107,11 +107,11 @@ class FoodDetailFragment : Fragment() {
         if(viewType == 1){
             appViewModel.createOrder(orderCopy)
             findNavController().navigate(R.id.action_foodDetailFragment_to_secondFragment)
-            Toast.makeText(requireContext(),"Agregaste un pedido con éxito", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(),"Agregaste un pedido con éxito", Toast.LENGTH_SHORT).show()
         }else if(viewType == 2){
             appViewModel.updateOrder(orderCopy)
             findNavController().navigate(R.id.action_foodDetailFragment_to_cartFragment)
-            Toast.makeText(requireContext(),"Actualizaste un pedido con éxito", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(),"Actualizaste un pedido con éxito", Toast.LENGTH_SHORT).show()
         }else if(viewType == 3){
             appViewModel.createOrder(orderCopy)
             findNavController().navigate(R.id.action_foodDetailFragment_to_firstFragment)

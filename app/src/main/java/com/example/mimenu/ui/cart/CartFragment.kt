@@ -53,7 +53,7 @@ class CartFragment : Fragment(), OnOrderClick {
         findNavController().navigate(action)
     }
     override fun onClickDelete(order: OrderModel) {
-        Toast.makeText(requireContext(), "Eliminaste un pedido con éxito", Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), "Eliminaste un pedido con éxito", Toast.LENGTH_SHORT).show()
         appViewModel.deleteOrder(order)
     }
     override fun onClickIcon(order: OrderModel) {
