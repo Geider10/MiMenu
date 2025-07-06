@@ -29,13 +29,14 @@ class AppRepository {
     }
     //food
     val getAllFoods : List<FoodModel> = provider.getAllFoods()
-    val getAllFoodOffer : List<FoodModel> = provider.getFoodOffer()
+    fun getAllFoodOffer(quantity: Int) : List<FoodModel> = provider.getFoodOffer(quantity)
     //category
     val getAllCategories : List<String> = provider.getAllCategories()
     //banners
     val getAllBanners : List<Int> = provider.getAllBanners()
     //voucher
-    val getAllVouchers : List<VoucherModel> = provider.getAllVouchers()
+    fun getAllVouchers (quantity : Int ): List<VoucherModel> = provider.getAllVouchers(quantity)
+
     private fun mapOrder(order: OrderModel) : OrderEntity {
         return  OrderEntity(
             id = order.id, name = order.name, description = order.description, img = order.img, price = order.price, priceTotal = order.priceTotal, quantity = order.quantity, discount = order.discount

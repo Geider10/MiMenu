@@ -10,24 +10,30 @@ abstract class DataSetMock {
     companion object{
 
          val foodList : List<FoodModel> = listOf(
-            FoodModel(1, "Doble Cuarto Xl" ,11900, "Mega hamburguesa de doble carne, doble queso cheddar, cebollita, kétchup y mostaza en pan de papa.", "Hamburguesa", R.mipmap.hamburguer),
-            FoodModel(2, "Epica Huevo" ,11300, "Mega hamburguesa de carne, queso cheddar, panceta, huevo, cebolla grillada y barbacoa ahumada en pan de papa.", "Hamburguesa", R.mipmap.hamburguer),
-            FoodModel(3, "Mega Doble Big Bang Cheddar" ,13900, "Mega hamburguesa de doble carne, queso cheddar, bacon, cebollita, kétchup y salsa cheddar en pan de papa. ", "Hamburguesa", R.mipmap.hamburguer, 40),
-            FoodModel(4, "Sundae de Chocalate" ,2900, "Helado de crema americana con salsa de chocolate.", "Sundae", R.mipmap.sundae, 20),
-            FoodModel(5, "Sundae de Frutilla" ,2900, "Helado de crema americana con salsa de frutilla.", "Sundae", R.mipmap.sundae),
-            FoodModel(6, "Sundae de Dulce de Leche" ,2900, "Helado de crema americana con salsa de dulce de leche.", "Sundae", R.mipmap.sundae),
-            FoodModel(7, "Café con 2 Medialunas" ,2399, "2 medialunas de manteca acompañadas de un café 330cc a elección o jugo de naranja." , "Team Dulce", R.mipmap.coffe),
-            FoodModel(8, "Medialuna" ,1000, "Medialuna de manteca." , "Team Dulce", R.mipmap.coffe),
-            FoodModel(9, "Café con 2 Medialunas de jamón y cheddar" ,3700, "2 medialunas jamón y cheddar de manteca acompañados de un café 330cc a elección o  jugo de naranja." , "Team Dulce", R.mipmap.coffe,5),
-        )
+             FoodModel(1, "Doble Cuarto Xl" ,12300, "Mega hamburguesa de doble carne, doble queso cheddar, cebollita, kétchup y mostaza en pan de papa.", "Hamburguesa", R.mipmap.hamburguer),
+             FoodModel(2, "Epica Huevo" ,11900, "Mega hamburguesa de carne, queso cheddar, panceta, huevo, cebolla grillada y barbacoa ahumada en pan de papa.", "Hamburguesa", R.mipmap.hamburguer),
+             FoodModel(3, "Mega Doble Big Bang Cheddar" ,14300, "Mega hamburguesa de doble carne, queso cheddar, bacon, cebollita, kétchup y salsa cheddar en pan de papa. ", "Hamburguesa", R.mipmap.hamburguer, 40),
+             FoodModel(4, "Sundae de Chocalate" ,2900, "Helado de crema americana con salsa de chocolate.", "Sundae", R.mipmap.sundae, 20),
+             FoodModel(5, "Sundae de Frutilla" ,2900, "Helado de crema americana con salsa de frutilla.", "Sundae", R.mipmap.sundae),
+             FoodModel(6, "Sundae de Dulce de Leche" ,2900, "Helado de crema americana con salsa de dulce de leche.", "Sundae", R.mipmap.sundae),
+             FoodModel(7, "Café con 2 Medialunas" ,2400, "2 medialunas de manteca acompañadas de un café 330cc a elección o jugo de naranja." , "Team Dulce", R.mipmap.coffe),
+             FoodModel(8, "Medialuna" ,1000, "Medialuna de manteca." , "Team Dulce", R.mipmap.coffe),
+             FoodModel(9, "Café con 2 Medialunas de jamón y cheddar" ,3700, "2 medialunas jamón y cheddar de manteca acompañados de un café 330cc a elección o  jugo de naranja." , "Team Dulce", R.mipmap.coffe,5),
+             FoodModel(10,"Nuggets X6", 8700, "6 bocaditos de pechuga de pollo, acompañadas de papas fritas y bebida a elección.", "Nuggets", R.mipmap.hamburguer),
+             FoodModel(11,"Nuggets bacon y cheddar x10", 12900, "10 bocaditos de pechuga de pollo bañados en muuucho cheddar y trocitos de bacon, acompañadas de papas fritas y bebida a elección.", "Nuggets", R.mipmap.hamburguer),
+             FoodModel(12,"Balde de Nuggets", 16500, "Balde con 30 bocaditos de pechuga de pollo.", "Nuggets", R.mipmap.hamburguer,35),
+             FoodModel(13, "Sandwich Huevo & Palta" ,8500, "Sandwich con doble huevo, palta y mayonesa, acompañado de papas fritas regulares y una bebida a elección", "Menúes Veggies", R.mipmap.hamburguer),
+             FoodModel(14, "Ensalada Palta y Egg Veggie" ,11900, "Ensalada con tomate, lechuga, cebolla grillada, huevo y palta, acompañada de una bebida a elección", "Menúes Veggies", R.mipmap.hamburguer,20),
+             FoodModel(15, "Cerro Veggie" ,8900, "Hamburguesa 100% a base de plantas con lechuga, tomate, cebolla, pepino, mostaza y kétchup.", "Menúes Veggies", R.mipmap.hamburguer),
+
+             )
          val categoryList : List<String> = listOf(
             "Hamburguesa",
             "Sundae",
             "Team Dulce",
-            "Ensaladas",
-            "Nuggets",
-            "bebidas"
-        )
+            "Menúes Veggies",
+            "Nuggets"
+         )
          val bannerList : List<Int> = listOf(
             R.mipmap.b44,
             R.mipmap.b2,

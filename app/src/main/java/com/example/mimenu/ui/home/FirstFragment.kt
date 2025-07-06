@@ -41,7 +41,8 @@ class FirstFragment : Fragment(), OnClickHome {
     }
 
     private fun setupDiscountRecycler(){
-        val adapter = DiscountAdapter(appViewModel.getAllFoodOffer, this)
+        val foodOfferList = appViewModel.getAllFoodOffer(4)
+        val adapter = DiscountAdapter(foodOfferList, this)
         binding.rvDiscountHome.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvDiscountHome.adapter = adapter
     }
@@ -51,7 +52,8 @@ class FirstFragment : Fragment(), OnClickHome {
         findNavController().navigate(action)
     }
     private fun setupVoucherRecycler(){
-        val adapter = VoucherAdapter(appViewModel.getAllVouchers, this)
+        val voucherList = appViewModel.getAllVouchers(4)
+        val adapter = VoucherAdapter(voucherList, this)
         binding.rvVoucherHome.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         binding.rvVoucherHome.adapter =adapter
     }

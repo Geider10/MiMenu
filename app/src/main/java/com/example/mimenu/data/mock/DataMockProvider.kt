@@ -10,8 +10,9 @@ class DataMockProvider {
     fun getAllFoods() : List<FoodModel>{
         return DataSetMock.foodList
     }
-    fun getFoodOffer() : List<FoodModel>{
-        return DataSetMock.foodList.filter { f -> f.discount != null }.subList(0,2)
+    fun getFoodOffer(quantity : Int) : List<FoodModel>{
+        if(quantity == 0) return  DataSetMock.foodList.filter { f -> f.discount != null }
+        return DataSetMock.foodList.filter { f -> f.discount != null }.subList(0,quantity)
     }
     fun getAllCategories() : List<String>{
         return DataSetMock.categoryList
@@ -19,8 +20,9 @@ class DataMockProvider {
     fun getAllBanners() : List<Int>{
         return DataSetMock.bannerList
     }
-    fun getAllVouchers () : List<VoucherModel> {
-        return DataSetMock.voucherList
+    fun getAllVouchers (quantity : Int) : List<VoucherModel> {
+        if(quantity == 0) return DataSetMock.voucherList
+        return DataSetMock.voucherList.subList(0,quantity)
     }
     private fun stringToLocalDate(date : String) : LocalDate {
         val formatter = DateTimeFormatter.ofPattern("dd/MM/yyy")

@@ -32,11 +32,12 @@ class AppViewModel : ViewModel() {
     }
     //food
     val getAllFoods : List<FoodModel> = repo.getAllFoods
-    val getAllFoodOffer : List<FoodModel> = repo.getAllFoodOffer
+    fun getAllFoodOffer(quantity: Int = 0) : List<FoodModel> = repo.getAllFoodOffer(quantity)
     //category
     val getAllCategories : List<String> = repo.getAllCategories
     //banner
     val getAllBanners : List<Int> = repo.getAllBanners
     //voucher
-    val getAllVouchers : List<VoucherModel> = repo.getAllVouchers
+    fun getAllVouchers (quantity : Int = 0) : List<VoucherModel> = repo.getAllVouchers(quantity)
+
 }
