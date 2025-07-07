@@ -43,8 +43,7 @@ class FirstFragment : Fragment(), OnClickHome {
     private fun setupDiscountRecycler(){
         val foodOfferList = appViewModel.getAllFoodOffer(4)
         val adapter = DiscountAdapter(foodOfferList, this)
-        binding.rvDiscountHome.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvDiscountHome.adapter = adapter
+        //binding.rvDiscountHome.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
     override fun onClickDiscount(food: FoodModel) {
         val order = OrderModel(name= food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1, discount = food.discount)
@@ -54,8 +53,7 @@ class FirstFragment : Fragment(), OnClickHome {
     private fun setupVoucherRecycler(){
         val voucherList = appViewModel.getAllVouchers(4)
         val adapter = VoucherAdapter(voucherList, this)
-        binding.rvVoucherHome.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-        binding.rvVoucherHome.adapter =adapter
+        //binding.rvVoucherHome.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
     }
     override fun onClickVoucher(voucher: VoucherModel) {
         val action = FirstFragmentDirections.actionFirstFragmentToVocuherDetailFragment(voucher)
