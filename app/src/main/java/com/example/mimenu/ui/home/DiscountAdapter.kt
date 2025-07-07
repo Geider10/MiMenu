@@ -5,15 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.databinding.FoodDiscountHomeBinding
+import com.example.mimenu.utils.Util
 
 class DiscountAdapter(private val discountList : List<FoodModel>, private val homeFragment: FirstFragment): RecyclerView.Adapter<DiscountAdapter.DiscountViewHolder>() {
+    private val util = Util.getInstance()
+
     inner class DiscountViewHolder(private val binding : FoodDiscountHomeBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(food : FoodModel){
             val offer =(food.price * food.discount!!) / 100
             val priceOffer = food.price - offer
             binding.ivFDHome.setImageResource(food.img)
             binding.tvNameFDHome.text = food.name
-            binding.tvPriceRemoveFDHome.text = "$ ${food.price}"
+            val priceRemove = util.formatTextToStrikeThrough("$ ${food.price}")
+            binding.tvPriceRemoveFDHome.text = priceRemove
             binding.tvPriceFDHome.text = "$ $priceOffer"
             binding.tvDiscountFDHome.text = "${food.discount}% OFF"
 

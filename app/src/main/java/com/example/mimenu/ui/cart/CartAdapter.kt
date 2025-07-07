@@ -2,6 +2,7 @@ package com.example.mimenu.ui.cart
 
 import android.annotation.SuppressLint
 import android.graphics.Paint
+import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.local.Entities.OrderEntity
 import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.databinding.OrderItemCartBinding
+import com.example.mimenu.utils.Util
 
 class CartAdapter(private val cartFragment : CartFragment) : RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
 
     private var orderList  = emptyList<OrderModel>()
+    private val util = Util.getInstance()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -46,7 +49,7 @@ class CartAdapter(private val cartFragment : CartFragment) : RecyclerView.Adapte
             binding.tvQuantityItemCart.text = order.quantity.toString()
             binding.tvPriceItemCart.text ="$ " + order.priceTotal.toString()
             binding.tvDiscountItemCart.text = "${order.discount}%"
-            setPriceRemove(order)
+            binding.tvPriceRemoveItemCart.text = setPriceRemove(order)
 
             binding.tvEditOrderCart.setOnClickListener{
                 val quantity = binding.tvQuantityItemCart.text.toString().toInt()
@@ -77,10 +80,9 @@ class CartAdapter(private val cartFragment : CartFragment) : RecyclerView.Adapte
                 }
             }
         }
-        private fun setPriceRemove(order : OrderModel) {
+        private fun setPriceRemove(order : OrderModel) : SpannableString {
             val priceRemove = order.price * order.quantity
-            binding.tvPriceRemoveItemCart.text = "$ $priceRemove"
-            binding.tvPriceRemoveItemCart.paintFlags = binding.tvPriceRemoveItemCart.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            return util.formatTextToStrikeThrough("$ $priceRemove")
         }
     }
     //@SuppressLint("NotifyDataSetChanged")

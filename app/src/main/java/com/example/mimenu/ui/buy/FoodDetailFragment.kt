@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.mimenu.R
 import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.databinding.FragmentFoodDetailBinding
+import com.example.mimenu.utils.Util
 import com.example.mimenu.view_model.AppViewModel
 
 
@@ -21,6 +22,7 @@ class FoodDetailFragment : Fragment() {
 
     private lateinit var binding : FragmentFoodDetailBinding
     private val appViewModel by viewModels<AppViewModel>()
+    private val util = Util.getInstance()
     private lateinit var order : OrderModel
     private var quantityFood = 0
     private var priceFood = 0
@@ -68,7 +70,8 @@ class FoodDetailFragment : Fragment() {
         binding.tvNameFoodDetail.text = order.name
         binding.tvDescriptionFoodDetail.text = order.description
         binding.ivFoodDetail.setImageResource(order.img)
-        formatPriceRemove(order.price)
+        val priceRemove = util.formatTextToStrikeThrough("$ ${order.price}")
+        binding.tvPriceRemoveFoodDetail.text = priceRemove
         binding.tvPriceFoodDetail.text = "$ $priceFood"
         binding.tvDiscountFoodDetail.text = "${order.discount}% OFF"
 
@@ -92,10 +95,6 @@ class FoodDetailFragment : Fragment() {
     private fun formatPriceTotalFood (price : Int, quantity: Int) : String {
         val price = price * quantity
         return "$ $price"
-    }
-    private fun formatPriceRemove(priceRemove : Int) {
-        binding.tvPriceRemoveFoodDetail.text = "$ $priceRemove"
-        binding.tvPriceRemoveFoodDetail.paintFlags = binding.tvPriceRemoveFoodDetail.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
     }
 
     private fun onClickOrder(){

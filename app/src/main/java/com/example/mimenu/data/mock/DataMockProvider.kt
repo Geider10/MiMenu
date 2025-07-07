@@ -24,8 +24,4 @@ class DataMockProvider {
         if(quantity == 0) return DataSetMock.voucherList
         return DataSetMock.voucherList.subList(0,quantity)
     }
-    private fun stringToLocalDate(date : String) : LocalDate {
-        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyy")
-        return LocalDate.parse(date,formatter)
-    }
 }

@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.databinding.CategoryItemBuyBinding
 import com.example.mimenu.databinding.FragmentItemBuyBinding
+import com.example.mimenu.utils.Util
 
 
 const val CATEGORY = 0
 const val FOOD = 1
 
 class BuyAdapter (private val itemBuyList : List<ItemBuy>, private val buyFragment : SecondFragment): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+    private val util = Util.getInstance()
 
     inner class CategoryViewHolder (private val binding : CategoryItemBuyBinding) : RecyclerView.ViewHolder(binding.root){
         fun bindCategory(category : String){
@@ -36,7 +38,8 @@ class BuyAdapter (private val itemBuyList : List<ItemBuy>, private val buyFragme
             }
 
             binding.tvNameItemBuy.text = food.name
-            formatPriceRemove(food.price)
+            val priceRemove = util.formatTextToStrikeThrough("$ ${food.price}")
+            binding.tvPriceRemoveItemBuy.text = priceRemove
             binding.tvPriceItemBuy.text = "$ $priceFood"
             binding.tvDiscountItemBuy.text = "${food.discount}% OFF"
             binding.imgItemBuy.setImageResource(food.img)
@@ -45,10 +48,7 @@ class BuyAdapter (private val itemBuyList : List<ItemBuy>, private val buyFragme
                 buyFragment.onClick(food)
             }
         }
-         private fun formatPriceRemove(priceRemove : Int) {
-            binding.tvPriceRemoveItemBuy.text = "$ $priceRemove"
-            binding.tvPriceRemoveItemBuy.paintFlags = binding.tvPriceRemoveItemBuy.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-        }
+
     }
     override fun getItemViewType(position: Int): Int {
         return when(itemBuyList[position]){

@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.data.model.VoucherModel
-import com.example.mimenu.data.repository.AppRepository
+import com.example.mimenu.repository.AppRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
