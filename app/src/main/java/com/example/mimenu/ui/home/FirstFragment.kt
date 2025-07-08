@@ -1,6 +1,7 @@
 package com.example.mimenu.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,33 +32,33 @@ class FirstFragment : Fragment(), OnClickHome {
         super.onViewCreated(view, savedInstanceState)
 
         setupBannerViewPager()
-        setupDiscountRecycler()
-        setupVoucherRecycler()
+        setupMainRecycler()
     }
     private fun setupBannerViewPager(){
         val adapter = BannerAdapter(appViewModel.getAllBanners)
         binding.viewPager.adapter = adapter
         binding.indicator.setViewPager(binding.viewPager)
     }
-
-    private fun setupDiscountRecycler(){
-        val foodOfferList = appViewModel.getAllFoodOffer(4)
-        val adapter = DiscountAdapter(foodOfferList, this)
-        //binding.rvDiscountHome.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-    }
     override fun onClickDiscount(food: FoodModel) {
         val order = OrderModel(name= food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1, discount = food.discount)
         val action = FirstFragmentDirections.actionFirstFragmentToFoodDetailFragment(order,3)
         findNavController().navigate(action)
     }
-    private fun setupVoucherRecycler(){
-        val voucherList = appViewModel.getAllVouchers(4)
-        val adapter = VoucherAdapter(voucherList, this)
-        //binding.rvVoucherHome.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-    }
+
     override fun onClickVoucher(voucher: VoucherModel) {
         val action = FirstFragmentDirections.actionFirstFragmentToVocuherDetailFragment(voucher)
         findNavController().navigate(action)
     }
-
+    private fun setupMainRecycler(){
+        val foodOfferList = appViewModel.getAllFoodOffer(4)
+        val voucherList = appViewModel.getAllVouchers(4)
+        val dataSectionList = listOf(
+            DataSectionHome(1, foodOfferList = foodOfferList),
+            DataSectionHome(2, voucherList = voucherList)
+        )
+        val mainAdapter = MainAdapter(dataSectionList)
+        binding.rvMain.setHasFixedSize(true)
+        binding.rvMain.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvMain.adapter = mainAdapter
+    }
 }
