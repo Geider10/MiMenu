@@ -14,7 +14,7 @@
             android:id="@+id/ivVoucherDetail"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            tools:background="@mipmap/co1"/>
+            tools:background="@mipmap/voucher2"/>
 
         <LinearLayout
             android:layout_width="match_parent"
