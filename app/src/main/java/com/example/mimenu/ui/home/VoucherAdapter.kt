@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.model.VoucherModel
 import com.example.mimenu.databinding.VoucherItemHomeBinding
 
-class VoucherAdapter(private val voucherList : List<VoucherModel>) : RecyclerView.Adapter<VoucherAdapter.VoucherViewHolder>() {
+class VoucherAdapter(private val voucherList : List<VoucherModel>, private val homeFragment: FirstFragment) : RecyclerView.Adapter<VoucherAdapter.VoucherViewHolder>() {
     inner class VoucherViewHolder(private val binding: VoucherItemHomeBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(voucher : VoucherModel){
             binding.ivVoucherHome.setBackgroundResource(voucher.img)
 
             binding.root.setOnClickListener{
-                //homeFragment.onClickVoucher(voucher)
+                homeFragment.onClickVoucher(voucher)
             }
         }
     }

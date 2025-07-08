@@ -56,7 +56,7 @@ class FirstFragment : Fragment(), OnClickHome {
             DataSectionHome(1, foodOfferList = foodOfferList),
             DataSectionHome(2, voucherList = voucherList)
         )
-        val mainAdapter = MainAdapter(dataSectionList)
+        val mainAdapter = MainAdapter(dataSectionList,this)
         binding.rvMain.setHasFixedSize(true)
         binding.rvMain.layoutManager = LinearLayoutManager(requireContext())
         binding.rvMain.adapter = mainAdapter

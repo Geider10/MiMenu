@@ -9,10 +9,10 @@ import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.data.model.VoucherModel
 import com.example.mimenu.databinding.CarruselSectionHomeBinding
 
-class MainAdapter(private val dataSectionList : List<DataSectionHome>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MainAdapter(private val dataSectionList : List<DataSectionHome>, private val homeFragment: FirstFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class FoodSectionViewHolder(private val binding : CarruselSectionHomeBinding) : RecyclerView.ViewHolder(binding.root){
         fun foodBind(foodList : List<FoodModel>){
-            val adapter = DiscountAdapter(foodList)
+            val adapter = DiscountAdapter(foodList,homeFragment)
             binding.tvCarruselSectionHome.text = "Descuentos"
             binding.rvCarruselSectionHome.layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
             binding.rvCarruselSectionHome.adapter = adapter
@@ -20,7 +20,7 @@ class MainAdapter(private val dataSectionList : List<DataSectionHome>) : Recycle
     }
     inner class VoucherSectionViewHolder(private val binding : CarruselSectionHomeBinding) : RecyclerView.ViewHolder(binding.root){
         fun voucherBind(voucherList : List<VoucherModel>){
-            val adapter = VoucherAdapter(voucherList)
+            val adapter = VoucherAdapter(voucherList,homeFragment)
             binding.tvCarruselSectionHome.text = "Cupónes"
             binding.rvCarruselSectionHome.layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL,false)
             binding.rvCarruselSectionHome.adapter = adapter

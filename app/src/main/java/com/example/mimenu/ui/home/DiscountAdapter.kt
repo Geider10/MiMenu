@@ -7,7 +7,7 @@ import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.databinding.FoodDiscountHomeBinding
 import com.example.mimenu.utils.Util
 
-class DiscountAdapter(private val discountList : List<FoodModel>): RecyclerView.Adapter<DiscountAdapter.DiscountViewHolder>() {
+class DiscountAdapter(private val discountList : List<FoodModel>, private val homeFragment: FirstFragment): RecyclerView.Adapter<DiscountAdapter.DiscountViewHolder>() {
     private val util = Util.getInstance()
 
     inner class DiscountViewHolder(private val binding : FoodDiscountHomeBinding) : RecyclerView.ViewHolder(binding.root){
@@ -22,7 +22,7 @@ class DiscountAdapter(private val discountList : List<FoodModel>): RecyclerView.
             binding.tvDiscountFDHome.text = "${food.discount}% OFF"
 
             binding.root.setOnClickListener{
-                //homeFragment.onClickDiscount(food)
+                homeFragment.onClickDiscount(food)
             }
         }
     }
