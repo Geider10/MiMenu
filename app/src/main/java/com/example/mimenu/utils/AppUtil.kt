@@ -11,17 +11,17 @@ import com.journeyapps.barcodescanner.BarcodeEncoder
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class Util {
+class AppUtil {
     private constructor()
     companion object{
-        private var INSTANCE : Util? = null
+        private var INSTANCE : AppUtil? = null
 
-        fun getInstance () : Util{
+        fun getInstance () : AppUtil{
             val tempInstance = INSTANCE
             if(tempInstance != null){
                 return tempInstance
             }
-            val instance = Util()
+            val instance = AppUtil()
             INSTANCE = instance
             return instance
         }

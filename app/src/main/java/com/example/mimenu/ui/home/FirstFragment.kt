@@ -53,8 +53,8 @@ class FirstFragment : Fragment(), OnClickHome {
         val foodOfferList = appViewModel.getAllFoodOffer(4)
         val voucherList = appViewModel.getAllVouchers(4)
         val dataSectionList = listOf(
-            DataSectionHome(1, foodOfferList = foodOfferList),
-            DataSectionHome(2, voucherList = voucherList)
+            DataSectionHome(1, voucherList = voucherList),
+            DataSectionHome(2, foodOfferList = foodOfferList)
         )
         val mainAdapter = MainAdapter(dataSectionList,this)
         binding.rvMain.setHasFixedSize(true)

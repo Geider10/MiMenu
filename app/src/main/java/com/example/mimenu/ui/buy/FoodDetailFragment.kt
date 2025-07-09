@@ -1,6 +1,5 @@
 package com.example.mimenu.ui.buy
 
-import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,7 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.mimenu.R
 import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.databinding.FragmentFoodDetailBinding
-import com.example.mimenu.utils.Util
+import com.example.mimenu.utils.AppUtil
 import com.example.mimenu.view_model.AppViewModel
 
 
@@ -22,7 +21,7 @@ class FoodDetailFragment : Fragment() {
 
     private lateinit var binding : FragmentFoodDetailBinding
     private val appViewModel by viewModels<AppViewModel>()
-    private val util = Util.getInstance()
+    private val appUtil = AppUtil.getInstance()
     private lateinit var order : OrderModel
     private var quantityFood = 0
     private var priceFood = 0
@@ -39,7 +38,7 @@ class FoodDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val args : FoodDetailFragmentArgs by navArgs()
+        val args : FoodDetailFragmentArgs by this.navArgs()
         order = args.order
         viewType = args.viewType
 
@@ -70,7 +69,7 @@ class FoodDetailFragment : Fragment() {
         binding.tvNameFoodDetail.text = order.name
         binding.tvDescriptionFoodDetail.text = order.description
         binding.ivFoodDetail.setImageResource(order.img)
-        val priceRemove = util.formatTextToStrikeThrough("$ ${order.price}")
+        val priceRemove = appUtil.formatTextToStrikeThrough("$ ${order.price}")
         binding.tvPriceRemoveFoodDetail.text = priceRemove
         binding.tvPriceFoodDetail.text = "$ $priceFood"
         binding.tvDiscountFoodDetail.text = "${order.discount}% OFF"

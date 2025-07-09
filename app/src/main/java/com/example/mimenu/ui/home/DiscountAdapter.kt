@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.databinding.FoodDiscountHomeBinding
-import com.example.mimenu.utils.Util
+import com.example.mimenu.utils.AppUtil
 
 class DiscountAdapter(private val discountList : List<FoodModel>, private val homeFragment: FirstFragment): RecyclerView.Adapter<DiscountAdapter.DiscountViewHolder>() {
-    private val util = Util.getInstance()
+    private val appUtil = AppUtil.getInstance()
 
     inner class DiscountViewHolder(private val binding : FoodDiscountHomeBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(food : FoodModel){
@@ -16,7 +16,7 @@ class DiscountAdapter(private val discountList : List<FoodModel>, private val ho
             val priceOffer = food.price - offer
             binding.ivFDHome.setImageResource(food.img)
             binding.tvNameFDHome.text = food.name
-            val priceRemove = util.formatTextToStrikeThrough("$ ${food.price}")
+            val priceRemove = appUtil.formatTextToStrikeThrough("$ ${food.price}")
             binding.tvPriceRemoveFDHome.text = priceRemove
             binding.tvPriceFDHome.text = "$ $priceOffer"
             binding.tvDiscountFDHome.text = "${food.discount}% OFF"

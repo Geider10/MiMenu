@@ -1,6 +1,5 @@
 package com.example.mimenu.ui.buy
 
-import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,14 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.databinding.CategoryItemBuyBinding
 import com.example.mimenu.databinding.FragmentItemBuyBinding
-import com.example.mimenu.utils.Util
+import com.example.mimenu.utils.AppUtil
 
 
 const val CATEGORY = 0
 const val FOOD = 1
 
 class BuyAdapter (private val itemBuyList : List<ItemBuy>, private val buyFragment : SecondFragment): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-    private val util = Util.getInstance()
+    private val appUtil = AppUtil.getInstance()
 
     inner class CategoryViewHolder (private val binding : CategoryItemBuyBinding) : RecyclerView.ViewHolder(binding.root){
         fun bindCategory(category : String){
@@ -38,7 +37,7 @@ class BuyAdapter (private val itemBuyList : List<ItemBuy>, private val buyFragme
             }
 
             binding.tvNameItemBuy.text = food.name
-            val priceRemove = util.formatTextToStrikeThrough("$ ${food.price}")
+            val priceRemove = appUtil.formatTextToStrikeThrough("$ ${food.price}")
             binding.tvPriceRemoveItemBuy.text = priceRemove
             binding.tvPriceItemBuy.text = "$ $priceFood"
             binding.tvDiscountItemBuy.text = "${food.discount}% OFF"

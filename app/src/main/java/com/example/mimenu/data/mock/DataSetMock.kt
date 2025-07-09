@@ -33,25 +33,28 @@ abstract class DataSetMock {
             "Nuggets"
          )
          val bannerList : List<Int> = listOf(
-             R.mipmap.banner1,
              R.mipmap.banner2,
+             R.mipmap.banner1,
+             R.mipmap.banner5,
              R.mipmap.banner3,
              R.mipmap.banner4,
-             R.mipmap.banner5
         )
         val voucherList: List<VoucherModel> = listOf(
-            VoucherModel(1, "Combo Mega Doble Big Bang + Sundae",
-                "Pedí la Mega Doble Big Bang y te llevás un Sundae gratis. Mega Doble Big Bang: Mega hamburguesa de doble carne, queso cheddar, bacon, cebollita, kétchup y salsa cheddar en pan de papa. Sundae: Helado de crema americana con salsa de chocolate.",
-                R.mipmap.voucher1, "54-2353-1646", LocalDate.of(2025, 8, 10), "Las + poderosas"),
+            VoucherModel(3, "Big Bang Cheddar + Nuggets",
+                "El duo legendario con 40% de descuento. Big Bang Cheddar: Mega hamburguesa de doble carne, queso cheddar, bacon, cebollita, kétchup y salsa cheddar en pan de papa. Nuggets: 6 bocaditos de pechuga de pollo, acompañadas de papas fritas y bebida a elección.",
+                R.mipmap.voucher7, "61-9294-3847", LocalDate.of(2025, 8, 20), "Las + poderosas"),
+            VoucherModel(9, "Café con medialuna gratis",
+                "Comprás un café y te llevás una medialuna sin costo solo por $2000. Café: express. Medialuna: de manteca.",
+                R.mipmap.voucher5, "58-3021-0042", LocalDate.of(2025, 9, 25), "Algo dulce"),
             VoucherModel(6, "Sundae x3 Pack",
                 "Elegí 3 sundaes a elección por $6900. Sundae: Helado de crema americana con salsa a elección.",
                 R.mipmap.voucher4, "66-3939-1029", LocalDate.of(2025, 10, 20), "Para compartir"),
+            VoucherModel(1, "Combo Mega Doble Big Bang + Sundae",
+                "Pedí la Mega Doble Big Bang y te llevás un Sundae gratis. Mega Doble Big Bang: Mega hamburguesa de doble carne, queso cheddar, bacon, cebollita, kétchup y salsa cheddar en pan de papa. Sundae: Helado de crema americana con salsa de chocolate.",
+                R.mipmap.voucher2, "54-2353-1646", LocalDate.of(2025, 8, 10), "Las + poderosas"),
             VoucherModel(5, "Ensalada y Sandwich de palta",
                 "2 medialunas rellenas + 2 cafés. Compartí una mañana feliz. Ensalada: Ensalada con tomate, lechuga, cebolla grillada, huevo y palta, acompañada de una bebida a elección. Sandwich de palta: Sandwich con doble huevo, palta y mayonesa, acompañado de papas fritas regulares y una bebida a elección.",
-                R.mipmap.voucher3, "84-9247-1172", LocalDate.of(2025, 9, 20), "Para compartir"),
-            VoucherModel(3, "Big Bang Cheddar + Nuggets",
-                "El duo legendario con 40% de descuento. Big Bang Cheddar: Mega hamburguesa de doble carne, queso cheddar, bacon, cebollita, kétchup y salsa cheddar en pan de papa. Nuggets: 6 bocaditos de pechuga de pollo, acompañadas de papas fritas y bebida a elección.",
-                R.mipmap.voucher2, "61-9294-3847", LocalDate.of(2025, 8, 20), "Las + poderosas"),
+                R.mipmap.voucher6, "84-9247-1172", LocalDate.of(2025, 9, 20), "Para compartir"),
             VoucherModel(2, "Epica Huevo + Cuarto XL",
                 "35% OFF solo por tiempo limitado. Epica huevo: Mega hamburguesa de carne, queso cheddar, panceta, huevo, cebolla grillada y barbacoa ahumada en pan de papa. Doble Cuarto XL: Mega hamburguesa de doble carne, doble queso cheddar, cebollita, kétchup y mostaza en pan de papa.",
                 R.mipmap.voucher1, "78-8472-1023", LocalDate.of(2025, 8, 15), "Las + poderosas"),
@@ -60,13 +63,11 @@ abstract class DataSetMock {
                 R.mipmap.voucher2, "73-1846-5821", LocalDate.of(2025, 9, 10), "Para compartir"),
             VoucherModel(7, "6 medialunas + 2 cafè",
                 "Solo por $6000 con 25% de descuento. Medialuna: de manteca. Café express.",
-                R.mipmap.voucher3, "35-4821-3991", LocalDate.of(2025, 10, 27), "Algo dulce"),
+                R.mipmap.voucher6, "35-4821-3991", LocalDate.of(2025, 10, 27), "Algo dulce"),
             VoucherModel(8, "Sundae + 2 medialunas",
                 "Helado y 2 medialunas por solo $4000. Sundae: Helado de crema americana con salsa a elección. Medialuna: de manteca.",
-                R.mipmap.voucher4, "49-2783-8872", LocalDate.of(2025, 9, 18), "Algo dulce"),
-            VoucherModel(9, "Café con medialuna gratis",
-                "Comprás un café y te llevás una medialuna sin costo solo por $2000. Café: express. Medialuna: de manteca.",
-                R.mipmap.voucher3, "58-3021-0042", LocalDate.of(2025, 9, 25), "Algo dulce")
+                R.mipmap.voucher3, "49-2783-8872", LocalDate.of(2025, 9, 18), "Algo dulce"),
+
         )
     }
 }
