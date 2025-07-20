@@ -3,8 +3,9 @@ Es una aplicación móvil que permite realizar pedidos de comida y acceder a pro
 
 ### Características 
 - Gestión de pedidos desde el carrito
-- Acceder a cupones a través de QR o código
-- Persistencia de datos con SQLite
+- Acceso a descuentos y cupones mediante código o QR
+- Filtros por tipo de comida y experiencia de usuario fluida
+- Persistencia de datos con Room
 
 
 ## Tecnologias
@@ -17,16 +18,16 @@ Es una aplicación móvil que permite realizar pedidos de comida y acceder a pro
 
 
 ## Futuras Mejoras
-- Integrar Firebase y Retrofit para los datos de la comida
-- Inicio de sesión y registro de usuarios
-- Gestionar los datos de usuario y sincronizar los pedidos
-- Realizar pagos con SDK de MP + Animación de Lottie
+- Integrar Firebase y Retrofit para obtener los datos de la comidas
+- Autenticación: inicio de sesión y registro de usuarios
+- Gestionar y sincronizar datos del usuario y sus pedidos
+- Integrar pagos con el SDK de Mercado Pago y animaciones con Lottie
 
 
 ## Componentes destacados
 - View Binding
 - Bottom Navigation
-- Toolbar custom
+- Toolbar personalizado
 - ViewPager2 + CircleIndicator3
-- ChipGroup + Chip dynamic 
-- RecyclerView Multiple View Types
+- ChipGroup + Chips dinámicos 
+- Recycler Mutiple ViewType + Nested RecyclerView
