@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import com.example.mimenu.MainActivity
 import com.example.mimenu.R
 import com.example.mimenu.data.model.VoucherModel
 import com.example.mimenu.databinding.FragmentVocuherDetailBinding
@@ -38,8 +39,16 @@ class VocuherDetailFragment : Fragment() {
             val bitmapQR = appUtil.createQR(voucher.code)
             binding.ivQRVoucherDetail.setImageBitmap(bitmapQR)
         }
+
+        var main = requireActivity() as MainActivity
+        main.disableBottomNav()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        var main = requireActivity() as MainActivity
+        main.enableBottomNav()
+    }
     private fun setDataVoucher() {
         binding.llContentCode.visibility = View.GONE
 

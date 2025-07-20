@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.mimenu.MainActivity
 import com.example.mimenu.R
 import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.databinding.FragmentFoodDetailBinding
@@ -46,8 +47,16 @@ class FoodDetailFragment : Fragment() {
         binding.btnDeleteFood.setOnClickListener { deleteFood() }
         binding.btnAddFood.setOnClickListener { addFood() }
         binding.btnClickOrder.setOnClickListener { onClickOrder() }
+
+        var main = requireActivity() as MainActivity
+        main.disableBottomNav()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        var main = requireActivity() as MainActivity
+        main.enableBottomNav()
+    }
     private fun setDataFood() {
         if (viewType == 1 || viewType == 3) {
             binding.tvActionFoodDetail.text = "Agregar"

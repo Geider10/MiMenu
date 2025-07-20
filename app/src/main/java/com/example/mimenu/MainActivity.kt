@@ -1,7 +1,10 @@
 package com.example.mimenu
 
+import android.opengl.Visibility
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -30,5 +33,11 @@ class MainActivity : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(binding.toolbar,navController,barConfig)
         bottomNav.setupWithNavController(navController)
+    }
+    fun enableBottomNav(){
+        bottomNav.visibility = View.VISIBLE
+    }
+    fun disableBottomNav(){
+        bottomNav.visibility = View.GONE
     }
 }
