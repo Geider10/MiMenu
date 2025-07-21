@@ -12,4 +12,8 @@
         android:id="@+id/cartFragment"
         android:title="Carrito"
         android:icon="@drawable/ic_cart"/>
+    <item
+        android:id="@+id/moreFragment"
+        android:title="Más"
+        android:icon="@drawable/ic_menu_burger"/>
 </menu>

@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
         val barConfig = AppBarConfiguration(setOf(
-            R.id.firstFragment, R.id.secondFragment, R.id.cartFragment
+            R.id.firstFragment, R.id.secondFragment, R.id.cartFragment, R.id.moreFragment
         ))
 
 
@@ -39,5 +39,11 @@ class MainActivity : AppCompatActivity() {
     }
     fun disableBottomNav(){
         bottomNav.visibility = View.GONE
+    }
+    fun enableToolBar(){
+        binding.toolbar.visibility = View.VISIBLE
+    }
+    fun disableToolBar(){
+        binding.toolbar.visibility = View.GONE
     }
 }
