@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,23 +9,13 @@
     android:padding="16dp"
     tools:context=".ui.buy.SecondFragment">
 
-    <HorizontalScrollView
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tlCategoryFoodBuy"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:scrollbars="none">
+        android:layout_height="wrap_content"
+        app:tabMode="scrollable">
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/cgCategory"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:singleLine="true"
-            app:chipSpacingHorizontal="12dp"
-            app:singleSelection="true"
-            app:selectionRequired="true">
-
-        </com.google.android.material.chip.ChipGroup>
-
-    </HorizontalScrollView>
+    </com.google.android.material.tabs.TabLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFoodBuy"

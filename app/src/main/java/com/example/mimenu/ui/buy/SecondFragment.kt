@@ -11,16 +11,23 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mimenu.R
 import com.example.mimenu.data.model.FoodModel
 import com.example.mimenu.data.model.OrderModel
 import com.example.mimenu.databinding.FragmentSecondBinding
 import com.example.mimenu.view_model.AppViewModel
 import com.google.android.material.chip.Chip
+import com.google.android.material.tabs.TabItem
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.Tab
 
 class SecondFragment : Fragment(), OnFoodClick {
 
     private lateinit var binding : FragmentSecondBinding
+    private lateinit var tabLayout : TabLayout
+    private lateinit var recyclerView: RecyclerView
+    private  lateinit var itemList : List<ItemBuy>
     private val appViewModel by viewModels<AppViewModel>()
 
     override fun onCreateView(
@@ -35,40 +42,49 @@ class SecondFragment : Fragment(), OnFoodClick {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupChipGroup(appViewModel.getAllCategories)
-        setupRecyclerFood()
+        itemList = createItemBuyList()
+        setupTabLayout(itemList)
+        setupRecyclerFood(itemList)
     }
-    private fun setupRecyclerFood(){
-        val itemBuyList = createItemBuyList()
-        var adapter = BuyAdapter(itemBuyList,this)
-        binding.rvFoodBuy.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvFoodBuy.adapter = adapter
-    }
-
     override fun onClick(food: FoodModel) {
         val order = OrderModel(name = food.name, description = food.description, price = food.price, img = food.img, priceTotal = food.price, quantity = 1, discount = food.discount)
         val action = SecondFragmentDirections.actionSecondFragmentToFoodDetailFragment(order,1)
         findNavController().navigate(action)
     }
-
-    private fun setupChipGroup(categoryList : List<String>){
+    private fun setupRecyclerFood(itemList : List<ItemBuy>){
+        var adapter = BuyAdapter(itemList,this)
+        recyclerView = binding.rvFoodBuy
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = adapter
+    }
+    private fun setupTabLayout(itemList : List<ItemBuy>){
+        tabLayout = binding.tlCategoryFoodBuy
+        val categoryList : List<String> = appViewModel.getAllCategories
         categoryList.forEach{name   ->
-            val chip = Chip(requireContext())
-            chip.id = 1
-            chip.text = name
-            chip.isCheckable = true
-            chip.isCheckedIconVisible = false
-            chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_dark))
-            chip.chipBackgroundColor = ContextCompat.getColorStateList(requireContext(), R.color.chip_category_selector)
-            //if(tag.id == 1){
-            //    chip.isChecked = true
-            // }
-
-            chip.setOnClickListener{
-                Log.d("category-item", chip.text.toString())
-            }
-            binding.cgCategory.addView(chip)
+            var tab= tabLayout.newTab()
+            tab.setText(name)
+            binding.tlCategoryFoodBuy.addTab(tab)
         }
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: Tab?) {
+                val categoryValue = tab?.text.toString()
+                Log.i("Buy Fragment", "selet tab : $categoryValue")
+                val categoryIndex = itemList.indexOfFirst{ c -> c is ItemBuy.CategoryItem && c.category == categoryValue }
+
+                if(categoryIndex != -1){
+                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                    layoutManager.scrollToPositionWithOffset(categoryIndex, 0) // 0 = top
+                }
+            }
+
+            override fun onTabUnselected(tab: Tab?) {
+            }
+
+            override fun onTabReselected(tab: Tab?) {
+            }
+
+        })
     }
 
     private fun createItemBuyList() : List<ItemBuy>{

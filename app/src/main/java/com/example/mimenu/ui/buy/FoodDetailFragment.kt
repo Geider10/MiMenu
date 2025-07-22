@@ -124,7 +124,8 @@ class FoodDetailFragment : Fragment() {
             findNavController().navigate(R.id.action_foodDetailFragment_to_firstFragment)
             Toast.makeText(requireContext(),"Agregaste un pedido con éxito", Toast.LENGTH_SHORT).show()
         }
-
+        var main = requireActivity() as MainActivity
+        main.enableBottomNav()
     }
 
 }
