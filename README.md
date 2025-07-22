@@ -1,11 +1,10 @@
 ## Descripción 
-Es una aplicación móvil que permite realizar pedidos de comida y acceder a promociones. Para desarrollar la app me inspiré en Mostaza y en Mercado Pago "Delivery".
+Es una aplicación móvil que permite realizar pedidos de comida y acceder a promociones. Para desarrollar la app me inspiré en la funcionalidad de Mostaza y de Mercado Pago "Delivery".
 
 ### Características 
 - Gestión de pedidos desde el carrito
 - Acceso a descuentos y cupones mediante código o QR
-- Filtros por tipo de comida y experiencia de usuario fluida
-- Persistencia de datos con Room
+- Persistencia de pedidos con Room
 
 
 ## Tecnologias
@@ -18,16 +17,16 @@ Es una aplicación móvil que permite realizar pedidos de comida y acceder a pro
 
 
 ## Futuras Mejoras
-- Integrar Firebase y Retrofit para obtener los datos de la comidas
-- Autenticación: inicio de sesión y registro de usuarios
-- Gestionar y sincronizar datos del usuario y sus pedidos
-- Integrar pagos con el SDK de Mercado Pago y animaciones con Lottie
+- Consumir la API: retrofit
+- Autenticación de usuarios: login y registro
+- Integrar pagos: sdk de Mercado Pago
+- Pedidos personalizados: comer en el local o pedir a domicilio o retirar el pedido
+- Panal del admin: dar de alta comidas, cupones, etc
 
 
 ## Componentes destacados
 - View Binding
 - Bottom Navigation
-- Toolbar personalizado
+- TabLayout
 - ViewPager2 + CircleIndicator3
-- ChipGroup + Chips dinámicos 
 - Recycler Mutiple ViewType + Nested RecyclerView
